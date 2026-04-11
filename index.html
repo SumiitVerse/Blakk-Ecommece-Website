@@ -229,6 +229,156 @@
       .collection-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
     }
+    /* ============================= */
+/* GLOBAL RESPONSIVE FIX */
+/* ============================= */
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ============================= */
+/* NAVBAR MOBILE FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .navbar__menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* ============================= */
+/* HERO SECTION */
+/* ============================= */
+@media (max-width: 900px) {
+  .hero {
+    height: auto;
+    padding: 120px 0 60px;
+  }
+
+  .hero__visual {
+    display: none;
+  }
+
+  .hero__title {
+    font-size: 2.5rem;
+  }
+}
+
+/* ============================= */
+/* GRID SYSTEM FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .collection-grid,
+  .services-grid,
+  .features-grid,
+  .mvv-grid,
+  .pricing-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .collection-grid,
+  .services-grid,
+  .features-grid,
+  .mvv-grid,
+  .pricing-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================= */
+/* ABOUT PAGE FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .about-hero__inner {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .story-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================= */
+/* CONTACT PAGE FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .contact-main {
+    grid-template-columns: 1fr !important;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================= */
+/* BLOG PAGE FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .blog-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================= */
+/* PRODUCT PAGE FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .product-layout {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .product-gallery {
+    position: static;
+  }
+}
+
+/* ============================= */
+/* SERVICE PAGES FIX */
+/* ============================= */
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+
+  .process-steps {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .process-steps {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ============================= */
+/* TEXT + SPACING FIX */
+/* ============================= */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 2rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -312,7 +462,7 @@
           </div>
         </div>
         <div class="product-card__body">
-        <img src="c:\Users\HP\OneDrive\Pictures\suit.jpeg">
+        <img src="suit.jpeg">
           <div class="product-card__name">Bold party suit</div>
           <div class="product-card__price"><del>₹24,999</del> ₹18,499</div>
         </div>
@@ -327,7 +477,7 @@
           </div>
         </div>
         <div class="product-card__body">
-          <img src="c:\Users\HP\OneDrive\Pictures\strait fit.jpeg">
+          <img src="strait fit.jpeg">
           <div class="product-card__name">Dark Black Loose Fit Jeans</div>
           <div class="product-card__price">₹32,000</div>
         </div>
@@ -341,7 +491,7 @@
           </div>
         </div>
         <div class="product-card__body">
-          <img src="c:\Users\HP\OneDrive\Pictures\blouse.jpeg">
+          <img src="blouse.jpeg">
           <div class="product-card__name">Women Black Silk Dress</div>
           <div class="product-card__price">₹8,999</div>
         </div>
@@ -356,7 +506,7 @@
           </div>
         </div>
         <div class="product-card__body">
-          <img src="c:\Users\HP\OneDrive\Pictures\sleveless fork.jpeg">
+          <img src="sleveless fork.jpeg">
           <div class="product-card__name">Black Party Wear</div>
           <div class="product-card__price"><del>₹12,500</del> ₹9,200</div>
         </div>
