@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ---- About Hero ---- */
+    .about-hero {
+      position: relative;
+      padding: calc(var(--navbar-h) + 6rem) 0 7rem;
+      overflow: hidden;
+    }
+    .about-hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 80% 40%, rgba(123,79,207,0.09) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 20% 70%, rgba(201,168,76,0.07) 0%, transparent 55%);
+    }
+    .about-hero__grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .about-hero__inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+    .about-hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.8rem;
+    }
+    .about-hero__eyebrow::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--gold);
+    }
+    .about-hero__title {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .about-hero__title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .about-hero__desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .about-hero__visual {
+      position: relative;
+    }
+    .hero-visual-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1a1810 0%, #2a2010 35%, #1a1a2e 75%, #0f1020 100%);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glass);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .hero-visual-main::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 60% 40%, rgba(201,168,76,0.06), transparent 60%);
+    }
+    .hero-visual-main .big-letter {
+      font-family: var(--font-display);
+      font-size: 10rem;
+      font-weight: 900;
+      color: rgba(201,168,76,0.06);
+      user-select: none;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-visual-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      background: var(--gold);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+      box-shadow: 0 20px 50px rgba(201,168,76,0.25);
+    }
+    .hero-visual-badge .big-num {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: #080808;
+      line-height: 1;
+    }
+    .hero-visual-badge .small-text {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(8,8,8,0.65);
+    }
+    .hero-visual-pill {
+      position: absolute;
+      top: 1.5rem;
+      right: -1.2rem;
+      background: rgba(15,15,15,0.95);
+      border: 1px solid var(--border-glass);
+      border-radius: 50px;
+      padding: 0.7rem 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      backdrop-filter: blur(12px);
+    }
+    .pill-dot {
+      width: 8px; height: 8px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse-ring 2s ease-out infinite;
+    }
+    .pill-text {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-primary);
+    }
+
+    /* ---- Story Section ---- */
+    .story-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .story-timeline {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 6px; bottom: 6px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--gold), var(--purple), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.8rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.2);
+    }
+    .timeline-year {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.4rem;
+    }
+    .timeline-event {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-desc {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ---- Mission / Vision / Values ---- */
+    .mvv-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .mvv-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .mvv-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--purple));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .mvv-card:hover::after { transform: scaleX(1); }
+    .mvv-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-5px); box-shadow: var(--shadow-card); }
+    .mvv-icon {
+      font-size: 2.2rem;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+    .mvv-title {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .mvv-desc {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ---- Values List ---- */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .value-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .value-item:hover { border-color: rgba(201,168,76,0.2); background: var(--gold-dim); }
+    .value-icon {
+      width: 36px; height: 36px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .value-name {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+    }
+    .value-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ---- Stats Band ---- */
+    .stats-band {
+      background: linear-gradient(135deg, #0f0f0f, #141414);
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+    }
+    .stats-inner {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .stats-inner .stat-item {
+      border-right: 1px solid var(--border-glass);
+    }
+    .stats-inner .stat-item:last-child { border-right: none; }
+
+    /* ---- Team ---- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .team-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+      text-align: center;
+    }
+    .team-card:hover {
+      border-color: rgba(201,168,76,0.25);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-card);
+    }
+    .team-card:hover .team-img { transform: scale(1.04); }
+    .team-img-wrap {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: #1a1a1a;
+    }
+    .team-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s ease;
+    }
+    .team-card__body { padding: 1.5rem 1.2rem; }
+    .team-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .team-role {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .team-bio {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .team-socials { display: flex; justify-content: center; gap: 0.5rem; }
+    .team-social {
+      width: 30px; height: 30px;
+      border: 1px solid var(--border-glass);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      transition: var(--transition);
+    }
+    .team-social:hover { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+
+    /* ---- Partners / Awards ---- */
+    .partner-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+    }
+    .partner-item {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      opacity: 0.35;
+      transition: opacity 0.3s;
+      cursor: default;
+    }
+    .partner-item:hover { opacity: 0.7; }
+
+    /* ---- Testimonials ---- */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .testimonial-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: var(--transition);
+      position: relative;
+    }
+    .testimonial-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      font-family: var(--font-display);
+      font-size: 5rem;
+      color: rgba(201,168,76,0.08);
+      line-height: 1;
+    }
+    .testimonial-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-4px); }
+    .testimonial-stars { color: var(--gold); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 1rem; }
+    .testimonial-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+    .testimonial-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testimonial-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .testimonial-name { font-family: var(--font-heading); font-size: 0.78rem; font-weight: 700; }
+    .testimonial-company { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .about-hero__inner { gap: 3rem; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats-inner { grid-template-columns: repeat(3, 1fr); }
+      .mvv-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .about-hero__inner { grid-template-columns: 1fr; }
+      .about-hero__visual { display: none; }
+      .story-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .mvv-grid { grid-template-columns: 1fr; }
+      .values-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- ======== HERO ======== -->
+<section class="about-hero">
+  <div class="about-hero__bg"></div>
+  <div class="about-hero__grid"></div>
+  <div class="container">
+    <div class="about-hero__inner">
+      <div>
+        <div class="about-hero__eyebrow">Est. 2015 · Mumbai, India</div>
+        <h1 class="about-hero__title">
+          We Don't Just<br>
+          Build Brands —<br>
+          We Build <em>Icons.</em>
+        </h1>
+        <p class="about-hero__desc">BLAKK was born at the intersection of haute couture and data intelligence. A decade of obsession with craft, design, and measurable growth has made us the most trusted name in luxury fashion and digital marketing across South Asia.</p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn--primary">Work With Us</a>
+          <a href="services.html" class="btn btn--outline">Our Services</a>
+        </div>
+      </div>
+
+      <div class="about-hero__visual">
+        <div class="hero-visual-main">
+          <span class="big-letter">V</span>
+        </div>
+        <div class="hero-visual-badge">
+          <span class="big-num">10+</span>
+          <span class="small-text">Years of Mastery</span>
+        </div>
+        <div class="hero-visual-pill">
+          <div class="pill-dot"></div>
+          <span class="pill-text">350+ Brands Elevated</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== STATS BAND ======== -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item"><span class="stat-number">350+</span><span class="stat-label">Brands Served</span></div>
+      <div class="stat-item"><span class="stat-number">₹50M+</span><span class="stat-label">Revenue Generated</span></div>
+      <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">Client Retention</span></div>
+      <div class="stat-item"><span class="stat-number">15+</span><span class="stat-label">Industry Awards</span></div>
+      <div class="stat-item"><span class="stat-number">1200+</span><span class="stat-label">Products Curated</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== BRAND STORY ======== -->
+<section class="section">
+  <div class="container">
+    <div class="story-layout">
+
+      <div>
+        <div class="breadcrumb" style="margin-bottom:1.5rem;padding:0;">
+          <span style="color:var(--gold);">✦</span>
+          <span>Our Origin</span>
+        </div>
+        <div class="label" style="margin-bottom:0.8rem;">The Story</div>
+        <h2 class="section-title">Born from a Belief That<br><em style="font-style:italic;color:var(--gold);">Excellence is Non-Negotiable</em></h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; margin-bottom:1.2rem;">In 2015, our founder Aryan Mehta was styling a photo shoot in a cramped Mumbai studio, manually managing email lists on a spreadsheet, and wondering why the two worlds — fashion and digital marketing — were so stubbornly separate.</p>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; margin-bottom:1.2rem;">He believed that the brands winning the next decade wouldn't be those with the biggest budgets, but those who understood both the <em>art</em> of luxury and the <em>science</em> of digital acquisition. BLAKK was the answer to that belief.</p>
+        <p style="color:var(--text-secondary); font-size:0.95rem; line-height:1.9; margin-bottom:2rem;">From a team of three operating out of a Bandra apartment, we've grown into a 60-person powerhouse with offices in Mumbai, Delhi, and Bangalore — serving premium labels across India, Southeast Asia, and the Middle East.</p>
+        <a href="contact.html" class="btn btn--primary">Start Your Story With Us</a>
+      </div>
+
+      <div>
+        <div class="label" style="margin-bottom:2rem;">Our Journey</div>
+        <div class="story-timeline">
+
+          <div class="timeline-item">
+            <div class="timeline-year">2015</div>
+            <div class="timeline-event">BLAKK Founded</div>
+            <div class="timeline-desc">Started as a boutique email marketing agency for three indie fashion labels in Mumbai. First ₹1L revenue in month two.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2017</div>
+            <div class="timeline-event">Fashion Collection Launch</div>
+            <div class="timeline-desc">Launched our own in-house clothing line, applying our marketing expertise to build the BLAKK brand from zero.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2019</div>
+            <div class="timeline-event">100th Client Milestone</div>
+            <div class="timeline-desc">Crossed 100 brand partnerships. Expanded into SMS, social media, and affiliate marketing verticals. Opened Delhi office.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2021</div>
+            <div class="timeline-event">₹10 Crore Revenue Mark</div>
+            <div class="timeline-desc">Despite pandemic challenges, our digital-first model helped both our clients and our agency achieve record growth.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-event">Southeast Asia Expansion</div>
+            <div class="timeline-desc">Extended services to Singapore, Dubai, and Kuala Lumpur. Team grew to 45 specialists across all marketing disciplines.</div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-event">Industry Leadership</div>
+            <div class="timeline-desc">Recognized as India's #1 Luxury Fashion Marketing Agency by Digital Commerce Awards. 350+ brands, 60-person team.</div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== MISSION / VISION / VALUES ======== -->
+<section class="section" style="background:var(--bg-secondary); border-top:1px solid var(--border-glass); border-bottom:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">What Drives Us</div>
+      <h2 class="section-title">Mission, Vision & Values</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="mvv-grid" style="margin-bottom:4rem;">
+      <div class="mvv-card">
+        <span class="mvv-icon">🎯</span>
+        <div class="mvv-title">Our Mission</div>
+        <p class="mvv-desc">To fuse the artistry of luxury fashion with the precision of data-driven digital marketing — creating brand ecosystems that grow exponentially while maintaining an unwavering standard of excellence and aesthetic integrity.</p>
+      </div>
+      <div class="mvv-card">
+        <span class="mvv-icon">🔭</span>
+        <div class="mvv-title">Our Vision</div>
+        <p class="mvv-desc">To be the defining force that transforms Indian and Asian luxury brands into globally recognized icons — proving that world-class fashion and world-class marketing are not separate ambitions, but one unified mastery.</p>
+      </div>
+      <div class="mvv-card">
+        <span class="mvv-icon">💎</span>
+        <div class="mvv-title">Our Promise</div>
+        <p class="mvv-desc">Every brand we work with receives the same obsessive attention we give our own label. We don't outsource strategy. We don't cut corners on creative. We measure everything and we never settle for average.</p>
+      </div>
+    </div>
+
+    <div class="section-header section-header--center" style="margin-bottom:2rem;">
+      <div class="label" style="margin-bottom:0.5rem;">Core Principles</div>
+      <h3 style="font-family:var(--font-display); font-size:1.8rem;">The Values We Live By</h3>
+    </div>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">✦</div>
+        <div>
+          <div class="value-name">Craft Over Speed</div>
+          <div class="value-desc">We never rush. Every campaign, every product, every pixel is given the time it deserves to be extraordinary.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">📊</div>
+        <div>
+          <div class="value-name">Data Informs, Instinct Leads</div>
+          <div class="value-desc">We respect numbers but we don't worship them. The best decisions blend analytical rigor with creative intuition.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🤝</div>
+        <div>
+          <div class="value-name">Radical Transparency</div>
+          <div class="value-desc">Every report, every result, every mistake — we share it all. Our clients always know exactly where they stand.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌱</div>
+        <div>
+          <div class="value-name">Long-Term Thinking</div>
+          <div class="value-desc">We build brands for decades, not campaigns for quarters. Every strategy we create is designed to compound over time.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌍</div>
+        <div>
+          <div class="value-name">Responsible Fashion</div>
+          <div class="value-desc">We champion sustainable practices, ethical sourcing, and brands that treat both people and planet with dignity.</div>
+        </div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🔥</div>
+        <div>
+          <div class="value-name">Relentless Improvement</div>
+          <div class="value-desc">We are never satisfied. There is always a better open rate, a sharper silhouette, a more powerful campaign waiting to be built.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TEAM ======== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">The Minds Behind BLAKK</div>
+      <h2 class="section-title">Meet Our Leadership</h2>
+      <div class="divider divider--center"></div>
+      <p class="section-subtitle">A team of fashion visionaries, data strategists, and creative obsessives — united by a shared belief in doing brilliant work.</p>
+    </div>
+
+    <div class="team-grid">
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="team-img" style="background:linear-gradient(135deg,#1c1810,#2a2010); font-size:5rem; color:rgba(201,168,76,0.1);">A</div>
+        </div>
+        <div class="team-card__body">
+          <img src="c:\Users\HP\OneDrive\Pictures\ceo.jpg">
+          <div class="team-name">Aryan Mehta</div>
+          <div class="team-role">Founder & CEO</div>
+          <p class="team-bio">12 years in luxury fashion and digital growth. Former creative director at two of India's leading fashion houses.</p>
+          <div class="team-socials">
+            <a href="contact.html" class="team-social">in</a>
+            <a href="contact.html" class="team-social">𝕏</a>
+            <a href="contact.html" class="team-social">✦</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="team-img" style="background:linear-gradient(135deg,#161822,#1e2035); font-size:5rem; color:rgba(123,79,207,0.1);">N</div>
+        </div>
+        <div class="team-card__body">
+            <img src="c:\Users\HP\OneDrive\Pictures\neha.jpg">
+          <div class="team-name">Neha Kapoor</div>
+          <div class="team-role">Chief Marketing Officer</div>
+          <p class="team-bio">Data-driven growth architect with a decade building performance funnels for premium D2C brands across South Asia.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social">in</a>
+            <a href="#" class="team-social">𝕏</a>
+            <a href="#" class="team-social">✦</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="team-img" style="background:linear-gradient(135deg,#181018,#221528); font-size:5rem; color:rgba(201,168,76,0.08);">R</div>
+        </div>
+        <div class="team-card__body">
+          <img src="c:\Users\HP\OneDrive\Pictures\ceo.jpg">
+          <div class="team-name">Rohan Singhania</div>
+          <div class="team-role">Creative Director</div>
+          <p class="team-bio">Award-winning designer whose editorial vision defines the BLAKK aesthetic — dark, precise, and unmistakably luxurious.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social">in</a>
+            <a href="#" class="team-social">𝕏</a>
+            <a href="#" class="team-social">✦</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-img-wrap">
+          <div class="team-img" style="background:linear-gradient(135deg,#101818,#152020); font-size:5rem; color:rgba(79,195,247,0.08);">P</div>
+        </div>
+        <div class="team-card__body">
+               <img src="c:\Users\HP\OneDrive\Pictures\neha.jpg">
+          <div class="team-name">Priya Sharma</div>
+          <div class="team-role">Head of Strategy</div>
+          <p class="team-bio">Former McKinsey consultant who left consulting to build real brands. Specializes in market positioning and multi-channel architecture.</p>
+          <div class="team-socials">
+            <a href="#" class="team-social">in</a>
+            <a href="#" class="team-social">𝕏</a>
+            <a href="#" class="team-social">✦</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="section" style="background:var(--bg-secondary); border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">Client Voices</div>
+      <h2 class="section-title">What Our Partners Say</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">BLAKK didn't just run our email campaigns — they rebuilt our entire customer journey. Our repeat purchase rate went from 18% to 41% in six months. That's not a marketing win, that's a business transformation.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:rgba(201,168,76,0.15); color:var(--gold);">V</div>
+          <div>
+            <div class="testimonial-name">Vikram Malhotra</div>
+            <div class="testimonial-company">CEO, House of Malhotra</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">We hired BLAKK for social media and ended up giving them our full marketing budget. Their understanding of luxury positioning is genuinely unmatched — they know exactly how premium brands should show up online.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:rgba(123,79,207,0.15); color:var(--purple-light);">S</div>
+          <div>
+            <div class="testimonial-name">Sanya Oberoi</div>
+            <div class="testimonial-company">Founder, Noir Atelier</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">The affiliate programme they built for us now drives 35% of our total revenue — completely passively. The infrastructure, partner recruitment, and commission tracking are world-class. Best investment we've made.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" style="background:rgba(79,195,247,0.1); color:var(--electric);">A</div>
+          <div>
+            <div class="testimonial-name">Aditya Bajaj</div>
+            <div class="testimonial-company">Director, Epoch Collective</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== PARTNERS ======== -->
+<section class="section--sm" style="border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center" style="margin-bottom:2.5rem;">
+      <div class="label">Trusted Partners & Platforms</div>
+    </div>
+    <div class="partner-strip">
+      <div class="partner-item">Klaviyo</div>
+      <div class="partner-item">Meta Business</div>
+      <div class="partner-item">Google Partner</div>
+      <div class="partner-item">Shopify Plus</div>
+      <div class="partner-item">Mailchimp</div>
+      <div class="partner-item">HubSpot</div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CTA ======== -->
+<section class="section--sm">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="label" style="margin-bottom:1rem;">Ready to Join the BLAKK Family?</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem); margin-bottom:1rem;">Let's Build Something Iconic Together</h2>
+      <p style="color:var(--text-secondary); margin-bottom:2.5rem; max-width:520px; margin-left:auto; margin-right:auto;">Whether you're launching a new label or scaling an established brand — we have the expertise, the tools, and the obsession to take you further.</p>
+      <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn--primary">Book a Free Consultation</a>
+        <a href="collection.html" class="btn btn--ghost">Shop the Collection</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

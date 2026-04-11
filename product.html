@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noir Velvet Blazer — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .product-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: start;
+      padding-top: calc(var(--navbar-h) + 3rem);
+      padding-bottom: 5rem;
+    }
+    .product-gallery { position: sticky; top: 100px; }
+    .gallery-main {
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg,#1c1810,#2a2010);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      border: 1px solid var(--border-glass);
+    }
+    .gallery-thumbs { display: flex; gap: 0.8rem; }
+    .thumb {
+      width: 70px; height: 90px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border-glass);
+      overflow: hidden;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .thumb:hover, .thumb.active { border-color: var(--gold); }
+    .thumb.active { box-shadow: 0 0 0 2px var(--gold); }
+    .thumb:nth-child(1) { background: linear-gradient(135deg,#1c1810,#2a2010); color:rgba(201,168,76,0.2); }
+    .thumb:nth-child(2) { background: linear-gradient(135deg,#161416,#201520); color:rgba(201,168,76,0.15); }
+    .thumb:nth-child(3) { background: linear-gradient(135deg,#101010,#181818); color:rgba(255,255,255,0.05); }
+    .thumb:nth-child(4) { background: linear-gradient(135deg,#181014,#22101a); color:rgba(201,168,76,0.1); }
+
+    .product-info { }
+    .product-name { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .product-sku { font-family: var(--font-heading); font-size: 0.68rem; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1.5rem; }
+    .product-rating { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 1.5rem; }
+    .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+    .rating-count { font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-heading); }
+    .product-price { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold); margin-bottom: 0.5rem; }
+    .product-price del { font-size: 1.2rem; color: var(--text-muted); margin-right: 0.8rem; }
+    .product-tax { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 2rem; }
+
+    .size-section { margin-bottom: 2rem; }
+    .size-label { font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); margin-bottom: 0.8rem; display: flex; justify-content: space-between; }
+    .size-guide { color: var(--gold); cursor: pointer; text-decoration: underline; }
+    .size-options { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .size-btn {
+      width: 48px; height: 48px;
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      transition: var(--transition);
+    }
+    .size-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .size-btn.active { border-color: var(--gold); color: var(--gold); background: var(--gold-dim); }
+    .size-btn.disabled { opacity: 0.3; cursor: not-allowed; text-decoration: line-through; }
+
+    .color-section { margin-bottom: 2rem; }
+    .color-options { display: flex; gap: 0.8rem; margin-top: 0.8rem; }
+    .color-dot {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+    }
+    .color-dot.active { border-color: var(--gold); transform: scale(1.15); }
+    .color-dot:hover { transform: scale(1.1); }
+
+    .qty-section { display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem; }
+    .qty-label { font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-secondary); }
+    .qty-control { display: flex; align-items: center; border: 1px solid var(--border-glass); border-radius: var(--radius); overflow: hidden; }
+    .qty-btn { width: 40px; height: 40px; background: var(--bg-glass); color: var(--text-primary); font-size: 1.2rem; transition: var(--transition); cursor: pointer; border: none; }
+    .qty-btn:hover { background: var(--gold-dim); color: var(--gold); }
+    .qty-input { width: 50px; height: 40px; text-align: center; background: none; border: none; color: var(--text-primary); font-family: var(--font-heading); font-size: 0.9rem; font-weight: 600; outline: none; }
+
+    .product-actions { display: flex; gap: 1rem; margin-bottom: 2.5rem; }
+    .product-actions .btn { flex: 1; justify-content: center; }
+
+    .product-meta { border-top: 1px solid var(--border-glass); padding-top: 1.5rem; }
+    .meta-row { display: flex; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--border-glass); font-size: 0.85rem; }
+    .meta-row:last-child { border: none; }
+    .meta-key { font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); width: 130px; flex-shrink: 0; }
+    .meta-val { color: var(--text-secondary); }
+
+    .product-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.9; margin-bottom: 2rem; }
+
+    .trust-badges { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .trust-badge { display: flex; align-items: center; gap: 0.5rem; font-size: 0.78rem; color: var(--text-muted); font-family: var(--font-heading); }
+    .trust-badge span:first-child { color: var(--gold); }
+
+    /* Related */
+    .related-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+
+    @media(max-width:900px) {
+      .product-layout { grid-template-columns:1fr; gap:3rem; padding-top:calc(var(--navbar-h)+2rem); }
+      .product-gallery { position:static; }
+      .related-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:500px) {
+      .related-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<div class="container">
+  <div class="breadcrumb" style="padding-top:calc(var(--navbar-h) + 1.5rem);">
+    <a href="index.html">Home</a><span>/</span>
+    <a href="collection.html">Collection</a><span>/</span>
+    <span>Noir Velvet Blazer</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="product-layout">
+
+    <!-- Gallery -->
+    <div class="product-gallery">
+      <div class="gallery-main">
+        <div style="font-family:var(--font-display);font-size:8rem;color:rgba(201,168,76,0.08);text-align:center;">✦</div>
+      </div>
+      <div class="gallery-thumbs">
+        <div class="thumb active">✦</div>
+        <div class="thumb">◈</div>
+        <div class="thumb">▲</div>
+        <div class="thumb">✧</div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-info">
+      <div class="label" style="margin-bottom:0.6rem;">Men's Outerwear</div>
+      <h1 class="product-name">Noir Velvet Blazer</h1>
+      <div class="product-sku">SKU: VX-BLZ-001</div>
+      <div class="product-rating">
+        <div class="stars">★★★★★</div>
+        <span class="rating-count">(128 reviews)</span>
+      </div>
+      <div class="product-price"><del>₹24,999</del> ₹18,499</div>
+      <div class="product-tax">Incl. 18% GST. Free delivery above ₹5,000.</div>
+
+      <p class="product-desc">The Noir Velvet Blazer is crafted from Italian-sourced micro-velvet with a structured silhouette that commands any room. Peak lapels, silk lining, and horn buttons define this as the centerpiece of luxury masculine dressing.</p>
+
+      <!-- Color -->
+      <div class="color-section">
+        <div class="size-label">Color: <strong style="color:var(--text-primary)">Noir Black</strong></div>
+        <div class="color-options">
+          <div class="color-dot active" style="background:#080808;" title="Noir Black"></div>
+          <div class="color-dot" style="background:#1a1a3e;" title="Midnight Blue"></div>
+          <div class="color-dot" style="background:#2a1f0f;" title="Cognac Brown"></div>
+          <div class="color-dot" style="background:#1a1a1a;border:1px solid var(--border-glass);" title="Charcoal"></div>
+        </div>
+      </div>
+
+      <!-- Size -->
+      <div class="size-section">
+        <div class="size-label">Size <span class="size-guide">Size Guide</span></div>
+        <div class="size-options">
+          <button class="size-btn disabled">XS</button>
+          <button class="size-btn">S</button>
+          <button class="size-btn active">M</button>
+          <button class="size-btn">L</button>
+          <button class="size-btn">XL</button>
+          <button class="size-btn">XXL</button>
+        </div>
+      </div>
+
+      <!-- Qty -->
+      <div class="qty-section">
+        <span class="qty-label">Qty</span>
+        <div class="qty-control">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <input class="qty-input" type="number" value="1" min="1" id="qtyInput">
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="product-actions">
+        <button class="btn btn--primary">Buy Now</button>
+        <button class="btn btn--outline">Add to Cart</button>
+        <button class="btn btn--ghost" style="flex:0;padding:1rem;">♡</button>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="trust-badges">
+        <div class="trust-badge"><span>🚚</span> Free Shipping</div>
+        <div class="trust-badge"><span>↩</span> 30-Day Returns</div>
+        <div class="trust-badge"><span>🔒</span> Secure Payment</div>
+        <div class="trust-badge"><span>✦</span> Authenticity Guaranteed</div>
+      </div>
+
+      <!-- Meta -->
+      <div class="product-meta">
+        <div class="meta-row"><span class="meta-key">Material</span><span class="meta-val">Italian Micro-Velvet, 80% Cotton 20% Silk</span></div>
+        <div class="meta-row"><span class="meta-key">Fit</span><span class="meta-val">Slim / Tailored</span></div>
+        <div class="meta-row"><span class="meta-key">Care</span><span class="meta-val">Dry Clean Only</span></div>
+        <div class="meta-row"><span class="meta-key">Origin</span><span class="meta-val">Made in India</span></div>
+        <div class="meta-row"><span class="meta-key">Tags</span>
+          <span class="meta-val" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+            <span class="tag">Blazer</span><span class="tag">Velvet</span><span class="tag">Formal</span><span class="tag">Luxury</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Related Products -->
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header">
+      <div class="label" style="margin-bottom:0.8rem;">You May Also Like</div>
+      <h2 class="section-title">Related Products</h2>
+    </div>
+    <div class="related-grid">
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#161822,#1e2035);font-size:3rem;color:rgba(123,79,207,0.1);">◈</div>
+          <div class="product-card__overlay"><a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View</a></div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Eclipse Trench Coat</div>
+          <div class="product-card__price">₹32,000</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#181818,#222);font-size:3rem;color:rgba(255,255,255,0.04);">▲</div>
+          <div class="product-card__overlay"><a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View</a></div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Midnight Silk Shirt</div>
+          <div class="product-card__price">₹8,999</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a1015,#25101a);font-size:3rem;color:rgba(201,168,76,0.08);">✧</div>
+          <div class="product-card__overlay"><a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View</a></div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Onyx Slim Trousers</div>
+          <div class="product-card__price">₹9,200</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#101818,#152020);font-size:3rem;color:rgba(79,195,247,0.08);">⬡</div>
+          <div class="product-card__overlay"><a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View</a></div>
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">Phantom Overcoat</div>
+          <div class="product-card__price">₹45,000</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="components.js"></script>
+<script>
+function changeQty(delta) {
+  const input = document.getElementById('qtyInput');
+  let val = parseInt(input.value) + delta;
+  if (val < 1) val = 1;
+  input.value = val;
+}
+document.querySelectorAll('.size-btn:not(.disabled)').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+document.querySelectorAll('.color-dot').forEach(dot => {
+  dot.addEventListener('click', () => {
+    document.querySelectorAll('.color-dot').forEach(d => d.classList.remove('active'));
+    dot.classList.add('active');
+  });
+});
+document.querySelectorAll('.thumb').forEach(thumb => {
+  thumb.addEventListener('click', () => {
+    document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

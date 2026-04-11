@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+
+    /* ---- Contact Hero ---- */
+    .contact-hero {
+      position: relative;
+      padding: calc(var(--navbar-h) + 5rem) 0 6rem;
+      overflow: hidden;
+    }
+    .contact-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 90% 30%, rgba(201,168,76,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(123,79,207,0.06) 0%, transparent 50%);
+    }
+    .contact-hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.016) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.016) 1px, transparent 1px);
+      background-size: 72px 72px;
+    }
+    .contact-hero__inner {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .contact-hero__title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.2rem;
+    }
+    .contact-hero__title em { font-style: italic; color: var(--gold); }
+    .contact-hero__sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ---- Main Layout ---- */
+    .contact-main {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* ---- Form Card ---- */
+    .form-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 3rem;
+    }
+    .form-card__header { margin-bottom: 2.5rem; }
+    .form-card__title {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+    .form-card__sub { font-size: 0.88rem; color: var(--text-muted); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* Radio / Checkbox group */
+    .service-checkboxes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+    }
+    .service-checkbox {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      cursor: pointer;
+    }
+    .service-checkbox input { display: none; }
+    .service-checkbox__box {
+      width: 18px; height: 18px;
+      border: 1px solid var(--border-glass);
+      border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      transition: var(--transition);
+      flex-shrink: 0;
+      font-size: 0.65rem;
+      color: transparent;
+    }
+    .service-checkbox input:checked + .service-checkbox__box {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: #080808;
+    }
+    .service-checkbox__label {
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      letter-spacing: 0.05em;
+      transition: color 0.3s;
+    }
+    .service-checkbox:hover .service-checkbox__box { border-color: var(--gold); }
+    .service-checkbox:hover .service-checkbox__label { color: var(--text-primary); }
+
+    /* Budget range */
+    .budget-options {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .budget-btn {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--border-glass);
+      border-radius: 2px;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: none;
+      transition: var(--transition);
+    }
+    .budget-btn.active,
+    .budget-btn:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gold);
+      color: #080808;
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+    .submit-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(201,168,76,0.3);
+    }
+    .submit-btn:active { transform: translateY(0); }
+
+    /* ---- Sidebar / Info ---- */
+    .contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+
+    .info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      transition: var(--transition);
+    }
+    .info-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
+    .info-card__icon {
+      width: 46px; height: 46px;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+      transition: var(--transition);
+    }
+    .info-card:hover .info-card__icon { background: var(--gold); }
+    .info-card__title {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .info-card__value {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+    }
+    .info-card__sub { font-size: 0.8rem; color: var(--text-muted); }
+    .info-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 0.6rem;
+      transition: gap 0.3s;
+    }
+    .info-card__link:hover { gap: 0.7rem; }
+
+    /* Social Proof Card */
+    .social-proof-card {
+      background: linear-gradient(135deg, #141414, #0f0f0f);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+    .sp-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+    .sp-rating { font-size: 1.5rem; font-family: var(--font-display); font-weight: 700; }
+    .sp-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; }
+    .sp-count { font-size: 0.75rem; color: var(--text-muted); }
+    .sp-reviews { display: flex; flex-direction: column; gap: 0.8rem; }
+    .sp-review {
+      background: var(--bg-glass);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius);
+      padding: 0.9rem;
+    }
+    .sp-review-text { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0.5rem; font-style: italic; }
+    .sp-review-author { font-family: var(--font-heading); font-size: 0.68rem; font-weight: 700; color: var(--gold); }
+
+    /* Hours Card */
+    .hours-grid {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.3rem 1rem;
+    }
+    .hours-day { font-size: 0.82rem; color: var(--text-secondary); }
+    .hours-time { font-size: 0.82rem; color: var(--text-primary); font-family: var(--font-heading); font-weight: 600; text-align: right; }
+    .hours-day.today { color: var(--gold); }
+    .hours-time.today { color: var(--gold); }
+
+    /* ---- Map Section ---- */
+    .map-section {
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--border-glass);
+      padding: 5rem 0;
+    }
+    .map-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+    .office-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .office-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-5px); box-shadow: var(--shadow-card); }
+    .office-map {
+      height: 180px;
+      background: linear-gradient(135deg, #0f1020, #1a1a30);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .office-map iframe { width: 100%; height: 100%; border: none; opacity: 0.7; filter: grayscale(60%) invert(90%) hue-rotate(180deg); }
+    .office-map-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      color: var(--text-muted);
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .office-map-placeholder .map-pin { font-size: 2rem; color: var(--gold); }
+    .office-card__body { padding: 1.5rem; }
+    .office-city {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .office-type {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+    .office-address { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; }
+    .office-phone { font-size: 0.82rem; color: var(--text-secondary); margin-top: 0.5rem; font-family: var(--font-heading); }
+
+    /* ---- FAQ ---- */
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border-glass);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 0;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: color 0.3s;
+      gap: 1rem;
+    }
+    .faq-question:hover { color: var(--gold); }
+    .faq-question.open { color: var(--gold); }
+    .faq-icon {
+      width: 28px; height: 28px;
+      border: 1px solid var(--border-glass);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: var(--transition);
+      color: var(--text-muted);
+    }
+    .faq-question.open .faq-icon { background: var(--gold-dim); border-color: var(--gold); color: var(--gold); transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .faq-answer.open { max-height: 300px; padding-bottom: 1.4rem; }
+
+    /* ---- Success Toast ---- */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--bg-card);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-family: var(--font-heading);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      z-index: 9999;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast-icon { color: var(--gold); font-size: 1.2rem; }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .contact-main { grid-template-columns: 1fr; }
+      .contact-info { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    }
+    @media (max-width: 768px) {
+      .form-row { grid-template-columns: 1fr; }
+      .service-checkboxes { grid-template-columns: 1fr; }
+      .map-grid { grid-template-columns: 1fr; }
+      .contact-info { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .form-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- ======== HERO ======== -->
+<section class="contact-hero">
+  <div class="container">
+    <div class="contact-hero__inner">
+      <div class="breadcrumb" style="justify-content:center; margin-bottom:1.5rem;">
+        <a href="index.html">Home</a><span>/</span><span>Contact</span>
+      </div>
+      <div class="label" style="margin-bottom:0.8rem;">Get In Touch</div>
+      <h1 class="contact-hero__title">
+        Let's Build Something<br><em>Extraordinary Together</em>
+      </h1>
+      <div class="divider divider--center"></div>
+      <p class="contact-hero__sub">Whether you're interested in our fashion collection, our marketing services, or a full brand partnership — we'd love to hear from you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== MAIN CONTACT ======== -->
+<section class="section" style="padding-top:4rem;">
+  <div class="container">
+    <div class="contact-main">
+
+      <!-- ---- FORM ---- -->
+      <div class="form-card">
+        <div class="form-card__header">
+          <h2 class="form-card__title">Send Us a Message</h2>
+          <p class="form-card__sub">We respond to every enquiry within 24 hours. For urgent matters, call us directly.</p>
+        </div>
+
+        <form id="contactForm" novalidate>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="firstName">First Name *</label>
+              <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Aryan" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="lastName">Last Name *</label>
+              <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Mehta" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address *</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="phone">Phone Number</label>
+              <input class="form-input" type="tel" id="phone" name="phone" placeholder="+91 98765 43210">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="company">Company / Brand Name</label>
+            <input class="form-input" type="text" id="company" name="company" placeholder="Your Brand Co.">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="enquiry">Enquiry Type *</label>
+            <select class="form-input form-select" id="enquiry" name="enquiry" required>
+              <option value="" disabled selected>Select what you're interested in</option>
+              <optgroup label="Fashion">
+                <option>Shop the Collection</option>
+                <option>Wholesale / B2B Order</option>
+                <option>Custom / Bespoke Piece</option>
+              </optgroup>
+              <optgroup label="Marketing Services">
+                <option>Email Marketing</option>
+                <option>SMS Marketing</option>
+                <option>Social Media Marketing</option>
+                <option>Content Marketing</option>
+                <option>Affiliate Marketing</option>
+                <option>Video Marketing</option>
+                <option>Full Brand Partnership</option>
+              </optgroup>
+              <optgroup label="Other">
+                <option>Press & Media</option>
+                <option>Careers</option>
+                <option>General Enquiry</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="display:block; margin-bottom:0.7rem;">Services You're Interested In</label>
+            <div class="service-checkboxes">
+              <label class="service-checkbox">
+                <input type="checkbox" name="services" value="email">
+                <div class="service-checkbox__box">✓</div>
+                <span class="service-checkbox__label">Email Marketing</span>
+              </label>
+              <label class="service-checkbox">
+                <input type="checkbox" name="services" value="sms">
+                <div class="service-checkbox__box">✓</div>
+                <span class="service-checkbox__label">SMS Marketing</span>
+              </label>
+              <label class="service-checkbox">
+                <input type="checkbox" name="services" value="social">
+                <div class="service-checkbox__box">✓</div>
+                <span class="service-checkbox__label">Social Media</span>
+              </label>
+              <label class="service-checkbox">
+                <input type="checkbox" name="services" value="content">
+                <div class="service-checkbox__box">✓</div>
+                <span class="service-checkbox__label">Content Marketing</span>
+              </label>
+              <label class="service-checkbox">
+                <input type="checkbox" name="services" value="affiliate">
+                <div class="service-checkbox__box">✓</div>
+                <span class="service-checkbox__label">Affiliate Marketing</span>
+              </label>
+              <label class="service-checkbox">
+                <input type="checkbox" name="services" value="video">
+                <div class="service-checkbox__box">✓</div>
+                <span class="service-checkbox__label">Video Marketing</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" style="display:block; margin-bottom:0.7rem;">Monthly Budget</label>
+            <div class="budget-options" id="budgetOptions">
+              <button type="button" class="budget-btn" onclick="selectBudget(this)">Under ₹10K</button>
+              <button type="button" class="budget-btn" onclick="selectBudget(this)">₹10K – ₹30K</button>
+              <button type="button" class="budget-btn" onclick="selectBudget(this)">₹30K – ₹1L</button>
+              <button type="button" class="budget-btn" onclick="selectBudget(this)">₹1L – ₹5L</button>
+              <button type="button" class="budget-btn" onclick="selectBudget(this)">₹5L+</button>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Your Message *</label>
+            <textarea class="form-textarea" id="message" name="message" rows="5" placeholder="Tell us about your brand, your goals, and how you'd like us to help..." required></textarea>
+          </div>
+
+          <div class="form-group" style="display:flex; align-items:flex-start; gap:0.7rem; margin-bottom:1.5rem;">
+            <label class="service-checkbox" style="align-items:flex-start; gap:0.7rem;">
+              <input type="checkbox" id="consent" required>
+              <div class="service-checkbox__box" style="margin-top:2px;">✓</div>
+              <span class="service-checkbox__label" style="font-size:0.8rem; line-height:1.6;">I agree to BLAKK's <a href="#" style="color:var(--gold);">Privacy Policy</a> and consent to being contacted regarding my enquiry.</span>
+            </label>
+          </div>
+
+          <button type="submit" class="submit-btn" id="submitBtn">
+            <span id="btnText">Send Message</span>
+            <span id="btnIcon" style="font-size:1rem;">→</span>
+          </button>
+
+        </form>
+      </div>
+
+      <!-- ---- SIDEBAR INFO ---- -->
+      <div class="contact-info">
+
+        <div class="info-card">
+          <div class="info-card__icon">📧</div>
+          <div class="info-card__title">Email Us</div>
+          <div class="info-card__value">hello@blakk.in</div>
+          <div class="info-card__sub">For general enquiries and partnerships</div>
+          <a href="mailto:hello@blakk.in" class="info-card__link">Write to Us →</a>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card__icon">📞</div>
+          <div class="info-card__title">Call Us</div>
+          <div class="info-card__value">+91 98765 43210</div>
+          <div class="info-card__sub">Mon – Sat, 10:00 AM – 7:00 PM IST</div>
+          <a href="tel:+919876543210" class="info-card__link">Call Now →</a>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card__icon">📍</div>
+          <div class="info-card__title">Headquarters</div>
+          <div class="info-card__value">Mumbai, India</div>
+          <div class="info-card__sub">14th Floor, One BKC Tower, Bandra Kurla Complex, Mumbai – 400 051</div>
+          <a href="https://maps.google.com" target="_blank" class="info-card__link">Get Directions →</a>
+        </div>
+
+        <div class="info-card">
+          <div class="info-card__icon">💬</div>
+          <div class="info-card__title">WhatsApp</div>
+          <div class="info-card__value">+91 87654 32109</div>
+          <div class="info-card__sub">Quick replies within 2 hours during business hours</div>
+          <a href="https://wa.me/918765432109" target="_blank" class="info-card__link">Chat on WhatsApp →</a>
+        </div>
+
+        <!-- Hours -->
+        <div class="info-card">
+          <div class="info-card__icon">🕐</div>
+          <div class="info-card__title">Business Hours</div>
+          <div style="margin-top:0.8rem;">
+            <div class="hours-grid">
+              <div class="hours-day today">Thursday (Today)</div>
+              <div class="hours-time today">10:00 – 19:00</div>
+              <div class="hours-day">Monday – Wednesday</div>
+              <div class="hours-time">10:00 – 19:00</div>
+              <div class="hours-day">Friday</div>
+              <div class="hours-time">10:00 – 19:00</div>
+              <div class="hours-day">Saturday</div>
+              <div class="hours-time">11:00 – 17:00</div>
+              <div class="hours-day">Sunday</div>
+              <div class="hours-time" style="color:var(--text-muted);">Closed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="social-proof-card">
+          <div class="sp-header">
+            <div>
+              <div class="sp-rating">4.9</div>
+              <div class="sp-stars">★★★★★</div>
+            </div>
+            <div class="sp-count">Based on 214 verified reviews</div>
+          </div>
+          <div class="sp-reviews">
+            <div class="sp-review">
+              <div class="sp-review-text">"Response time was instant and the strategy session was incredibly valuable. Best agency we've worked with."</div>
+              <div class="sp-review-author">— Vikram M., House of Malhotra</div>
+            </div>
+            <div class="sp-review">
+              <div class="sp-review-text">"From first contact to campaign launch in under a week. Truly world-class team."</div>
+              <div class="sp-review-author">— Sanya O., Noir Atelier</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Social Links -->
+        <div class="info-card">
+          <div class="info-card__title">Follow Us</div>
+          <div style="display:flex; gap:0.7rem; margin-top:0.8rem; flex-wrap:wrap;">
+            <a href="#" class="social-link" style="width:42px;height:42px;" aria-label="Instagram">✦</a>
+            <a href="#" class="social-link" style="width:42px;height:42px;" aria-label="Twitter">𝕏</a>
+            <a href="#" class="social-link" style="width:42px;height:42px;" aria-label="LinkedIn">in</a>
+            <a href="#" class="social-link" style="width:42px;height:42px;" aria-label="YouTube">▶</a>
+            <a href="#" class="social-link" style="width:42px;height:42px;" aria-label="Facebook">ƒ</a>
+          </div>
+        </div>
+
+      </div><!-- end contact-info -->
+
+    </div><!-- end contact-main -->
+  </div>
+</section>
+
+<!-- ======== OUR OFFICES ======== -->
+<div class="map-section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">Find Us</div>
+      <h2 class="section-title">Our Offices</h2>
+      <div class="divider divider--center"></div>
+      <p class="section-subtitle">Three locations across India, one shared obsession with brand excellence.</p>
+    </div>
+
+    <div class="map-grid">
+
+      <div class="office-card">
+        <div class="office-map">
+          <!-- Real Google Maps embed for Mumbai BKC -->
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.027!2d72.8652!3d19.0596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c8e7e0a4f45f%3A0xef96fb97a5b6c58b!2sBandra+Kurla+Complex%2C+Mumbai!5e0!3m2!1sen!2sin!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="office-card__body">
+          <div class="office-type">Headquarters</div>
+          <div class="office-city">Mumbai</div>
+          <div class="office-address">14th Floor, One BKC Tower<br>Bandra Kurla Complex<br>Mumbai – 400 051</div>
+          <div class="office-phone">📞 +91 98765 43210</div>
+        </div>
+      </div>
+
+      <div class="office-card">
+        <div class="office-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0!2d77.2219!3d28.6139!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5b347eb62d%3A0x52c2b7494e204dce!2sConnaught+Place%2C+New+Delhi!5e0!3m2!1sen!2sin!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="office-card__body">
+          <div class="office-type">North India Office</div>
+          <div class="office-city">New Delhi</div>
+          <div class="office-address">Level 8, Worldmark 2<br>Connaught Place<br>New Delhi – 110 001</div>
+          <div class="office-phone">📞 +91 11 4567 8900</div>
+        </div>
+      </div>
+
+      <div class="office-card">
+        <div class="office-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.8!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBrigade+Road%2C+Bengaluru!5e0!3m2!1sen!2sin!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+        <div class="office-card__body">
+          <div class="office-type">South India Office</div>
+          <div class="office-city">Bangalore</div>
+          <div class="office-address">3rd Floor, Prestige Tech Park<br>Brigade Road<br>Bengaluru – 560 025</div>
+          <div class="office-phone">📞 +91 80 4567 8901</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ======== FAQ ======== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">FAQ</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="divider divider--center"></div>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How quickly do you respond to enquiries?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          We respond to all email and form enquiries within 24 hours on business days. For urgent matters, our WhatsApp line is monitored during business hours and typically responds within 2 hours. Phone calls are answered directly Monday to Saturday from 10 AM to 7 PM IST.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you work with brands outside India?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          Yes, absolutely. We currently serve brands in India, Singapore, Dubai, Kuala Lumpur, and London. Our marketing services are fully remote and our fashion collection ships internationally. We're comfortable working across time zones and currencies.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What's the minimum budget to work with BLAKK on marketing?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          Our marketing retainers start at ₹9,999/month for focused single-channel campaigns (like email or SMS). For multi-channel brand partnerships, budgets typically start at ₹50,000/month. We're happy to discuss what's achievable within your specific budget during a free consultation call.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do you offer free consultations or audits?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          Yes — we offer a free 45-minute strategy consultation for all new enquiries. For existing brands, we also offer a complimentary marketing audit that assesses your current channels, identifies gaps, and outlines a 90-day growth roadmap. No strings attached.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How do I place a wholesale or bulk clothing order?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          For wholesale or B2B orders, please select "Wholesale / B2B Order" in the enquiry type above and include the estimated quantities and styles you're interested in. Our wholesale team will get back to you within 48 hours with pricing tiers, minimum order quantities, and lead times.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I visit your studio or showroom in Mumbai?
+          <div class="faq-icon">+</div>
+        </button>
+        <div class="faq-answer">
+          Yes, our Mumbai headquarters houses both our marketing agency offices and a private showroom featuring the current BLAKK collection. Showroom visits are by appointment only. Please contact us to schedule a time and we'll ensure a curated private experience for you.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======== CTA STRIP ======== -->
+<section class="section--sm" style="background:var(--bg-secondary); border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div style="display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;">
+      <div>
+        <div class="label" style="margin-bottom:0.5rem;">Still Browsing?</div>
+        <h3 style="font-family:var(--font-display); font-size:1.6rem; font-weight:700;">Explore What We Offer</h3>
+      </div>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+        <a href="collection.html" class="btn btn--outline">Shop Collection</a>
+        <a href="services.html" class="btn btn--primary">View Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TOAST ======== -->
+<div class="toast" id="successToast">
+  <span class="toast-icon">✦</span>
+  <div>
+    <div style="font-weight:700; margin-bottom:2px;">Message Sent!</div>
+    <div style="font-weight:400; color:var(--text-muted); font-size:0.75rem;">We'll be in touch within 24 hours.</div>
+  </div>
+</div>
+
+<div id="footer-container"></div>
+
+<script src="components.js"></script>
+<script>
+
+  /* ---- Budget Selection ---- */
+  function selectBudget(btn) {
+    document.querySelectorAll('.budget-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  /* ---- Checkbox visual toggle ---- */
+  document.querySelectorAll('.service-checkbox input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', function() {
+      const box = this.nextElementSibling;
+      if (this.checked) {
+        box.style.background = 'var(--gold)';
+        box.style.borderColor = 'var(--gold)';
+        box.style.color = '#080808';
+      } else {
+        box.style.background = '';
+        box.style.borderColor = '';
+        box.style.color = 'transparent';
+      }
+    });
+  });
+
+  /* ---- FAQ Toggle ---- */
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+
+    // Close all
+    document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('open'));
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  /* ---- Form Submission ---- */
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submitBtn');
+    const btnText = document.getElementById('btnText');
+    const btnIcon = document.getElementById('btnIcon');
+
+    // Validate required fields
+    const required = this.querySelectorAll('[required]');
+    let valid = true;
+    required.forEach(field => {
+      if (!field.value.trim() && field.type !== 'checkbox') {
+        field.style.borderColor = '#e74c3c';
+        valid = false;
+        setTimeout(() => field.style.borderColor = '', 3000);
+      }
+      if (field.type === 'checkbox' && !field.checked) {
+        valid = false;
+      }
+    });
+
+    if (!valid) return;
+
+    // Loading state
+    btn.disabled = true;
+    btnText.textContent = 'Sending...';
+    btnIcon.textContent = '⏳';
+
+    // Simulate submission
+    setTimeout(() => {
+      btn.disabled = false;
+      btnText.textContent = 'Message Sent ✓';
+      btnIcon.textContent = '✦';
+      btn.style.background = '#1a4a1a';
+      btn.style.color = '#4caf50';
+
+      // Show toast
+      const toast = document.getElementById('successToast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 5000);
+
+      // Reset after delay
+      setTimeout(() => {
+        document.getElementById('contactForm').reset();
+        document.querySelectorAll('.service-checkbox__box').forEach(b => {
+          b.style.background = '';
+          b.style.borderColor = '';
+          b.style.color = 'transparent';
+        });
+        document.querySelectorAll('.budget-btn').forEach(b => b.classList.remove('active'));
+        btnText.textContent = 'Send Message';
+        btnIcon.textContent = '→';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 4000);
+    }, 1800);
+  });
+
+  /* ---- Input focus effect ---- */
+  document.querySelectorAll('.form-input, .form-textarea, .form-select').forEach(input => {
+    input.addEventListener('focus', () => input.style.borderColor = 'var(--gold)');
+    input.addEventListener('blur', () => input.style.borderColor = '');
+  });
+
+</script>
+<script src='https://cdn.jotfor.ms/agent/embedjs/019d7c6f91fc73ceb57cc087a468c96c1d91/embed.js'>
+</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Art of Dark Luxury — BLAKK Journal</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .post-layout { display:grid; grid-template-columns:1fr 300px; gap:4rem; }
+    .post-hero-img { aspect-ratio:16/6; background:linear-gradient(135deg,#1c1810,#2a2010,#1a1a2e); border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; font-size:8rem; color:rgba(201,168,76,.06); margin-bottom:3rem; border:1px solid var(--border-glass); overflow:hidden; }
+    .post-meta { display:flex; align-items:center; gap:2rem; flex-wrap:wrap; margin-bottom:2rem; padding-bottom:2rem; border-bottom:1px solid var(--border-glass); }
+    .post-author { display:flex; align-items:center; gap:.8rem; }
+    .author-avatar { width:42px; height:42px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; color:#080808; font-size:.9rem; }
+    .author-name { font-family:var(--font-heading); font-size:.8rem; font-weight:600; }
+    .author-role { font-size:.72rem; color:var(--text-muted); }
+    .post-stats { display:flex; gap:1.5rem; font-size:.78rem; color:var(--text-muted); font-family:var(--font-heading); }
+    .post-share { display:flex; gap:.6rem; }
+    .share-btn { width:34px; height:34px; border:1px solid var(--border-glass); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.8rem; color:var(--text-muted); transition:var(--transition); cursor:pointer; background:none; }
+    .share-btn:hover { border-color:var(--gold); color:var(--gold); }
+
+    .post-content h2 { font-family:var(--font-display); font-size:1.8rem; font-weight:700; margin:2.5rem 0 1rem; color:var(--text-primary); }
+    .post-content h3 { font-family:var(--font-display); font-size:1.3rem; font-weight:600; margin:2rem 0 .8rem; color:var(--text-primary); }
+    .post-content p { font-size:.95rem; color:var(--text-secondary); line-height:1.9; margin-bottom:1.3rem; }
+    .post-content blockquote { border-left:3px solid var(--gold); padding:1.5rem 2rem; background:var(--gold-dim); border-radius:0 var(--radius) var(--radius) 0; margin:2rem 0; font-family:var(--font-display); font-style:italic; font-size:1.15rem; color:var(--text-primary); }
+    .post-content ul, .post-content ol { padding-left:1.5rem; margin-bottom:1.3rem; }
+    .post-content li { color:var(--text-secondary); font-size:.95rem; line-height:1.9; margin-bottom:.4rem; }
+    .post-content strong { color:var(--text-primary); font-weight:600; }
+    .post-content .inline-img { aspect-ratio:16/8; background:linear-gradient(135deg,#161822,#1e2035); border-radius:var(--radius-lg); display:flex; align-items:center; justify-content:center; font-size:5rem; color:rgba(123,79,207,.08); margin:2rem 0; border:1px solid var(--border-glass); }
+    .post-tags { display:flex; flex-wrap:wrap; gap:.5rem; margin:2.5rem 0; }
+    .post-author-box { background:var(--bg-card); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:2rem; display:flex; gap:1.5rem; align-items:flex-start; margin:3rem 0; }
+    .author-box-avatar { width:70px; height:70px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:700; color:#080808; font-size:1.5rem; flex-shrink:0; }
+    .author-box-name { font-family:var(--font-display); font-size:1.1rem; font-weight:700; margin-bottom:.3rem; }
+    .author-box-role { font-size:.75rem; color:var(--gold); font-family:var(--font-heading); text-transform:uppercase; letter-spacing:.15em; margin-bottom:.7rem; }
+    .author-box-bio { font-size:.85rem; color:var(--text-secondary); line-height:1.8; }
+
+    /* Comments */
+    .comment-section { margin-top:4rem; padding-top:3rem; border-top:1px solid var(--border-glass); }
+    .comment-item { display:flex; gap:1rem; padding:1.5rem 0; border-bottom:1px solid var(--border-glass); }
+    .comment-avatar { width:44px; height:44px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-family:var(--font-heading); font-weight:700; font-size:.9rem; }
+    .comment-name { font-family:var(--font-heading); font-size:.78rem; font-weight:700; letter-spacing:.08em; }
+    .comment-date { font-size:.72rem; color:var(--text-muted); margin-left:.8rem; }
+    .comment-text { font-size:.88rem; color:var(--text-secondary); line-height:1.8; margin-top:.4rem; }
+    .comment-form { background:var(--bg-card); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:2rem; margin-top:2rem; }
+    .comment-form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+
+    /* Sidebar */
+    .sidebar-widget { background:var(--bg-card); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:1.8rem; margin-bottom:1.5rem; }
+    .widget-title { font-family:var(--font-heading); font-size:.72rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:1.2rem; }
+    .recent-post { display:flex; gap:1rem; padding:.7rem 0; border-bottom:1px solid var(--border-glass); }
+    .recent-post:last-child { border:none; }
+    .recent-thumb { width:55px; height:55px; border-radius:var(--radius); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:1.4rem; }
+    .recent-post-title { font-family:var(--font-display); font-size:.82rem; font-weight:600; margin-bottom:.3rem; line-height:1.3; }
+    .recent-post-date { font-size:.7rem; color:var(--text-muted); }
+
+    @media(max-width:1100px) { .post-layout{grid-template-columns:1fr;} }
+    @media(max-width:600px) { .comment-form-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+<section style="padding-top:calc(var(--navbar-h) + 3rem);padding-bottom:5rem;">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="blog.html">Journal</a><span>/</span><span>Dark Luxury</span></div>
+    <div class="post-layout">
+
+      <!-- Article -->
+      <article>
+        <div class="blog-card__cat" style="margin-bottom:1rem;">Fashion</div>
+        <h1 style="font-size:clamp(2rem,4vw,3rem);font-weight:900;line-height:1.15;margin-bottom:1.5rem;">The Art of Dark Luxury: How Monochrome is Redefining Fashion in 2025</h1>
+
+        <div class="post-meta">
+          <div class="post-author">
+            <div class="author-avatar">A</div>
+            <div>
+              <div class="author-name">Aryan Mehta</div>
+              <div class="author-role">Creative Director, BLAKK</div>
+            </div>
+          </div>
+          <div class="post-stats">
+            <span>📅 December 12, 2025</span>
+            <span>⏱ 8 min read</span>
+            <span>👁 4,281 views</span>
+          </div>
+          <div class="post-share">
+            <button class="share-btn" title="Share on Twitter">𝕏</button>
+            <button class="share-btn" title="Share on LinkedIn">in</button>
+            <button class="share-btn" title="Share on Instagram">✦</button>
+          </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="post-hero-img">✦</div>
+
+        <!-- Content -->
+        <div class="post-content">
+          <p>The conversation around luxury fashion has always been dominated by maximalism — bold logos, bright colors, and statement silhouettes that announce status from across the room. But in 2025, something quietly seismic has happened: the most coveted pieces in premium wardrobes are the ones that whisper rather than shout.</p>
+
+          <p>Dark luxury is not a new concept. The all-black wardrobe has been a uniform of the intellectually sophisticated since the days of Yohji Yamamoto and Rei Kawakubo. But what's different now is the democratization of this philosophy — and its intersection with a digital culture that rewards restraint and authenticity over obvious opulence.</p>
+
+          <h2>The Cultural Shift Driving Dark Aesthetics</h2>
+
+          <p>Generation Z's relationship with luxury is fundamentally different from their predecessors. Where millennials sought aspirational logos as social signifiers, Gen Z consumers distrust obvious wealth signals. They have grown up watching the performative consumption of social media and — consciously or not — they're rejecting it.</p>
+
+          <blockquote>"The most luxurious thing you can wear in 2025 is something that only people who know, know." — Aryan Mehta, BLAKK</blockquote>
+
+          <p>This creates an interesting paradox for luxury fashion houses: the more they invest in understated design, the more covetable their pieces become. Brands like BLAKK are responding by focusing on materials, silhouette, and craftsmanship over logomania.</p>
+
+          <h2>Key Pieces Defining the Dark Luxury Movement</h2>
+
+          <p>So what does a dark luxury wardrobe actually look like in 2025? Here are the pieces that are commanding attention in the most discerning closets:</p>
+
+          <ul>
+            <li><strong>Velvet blazers with peak lapels</strong> — The return of velvet in formalwear signals a move toward tactility and richness without artifice</li>
+            <li><strong>Oversized trench coats in charcoal and near-black</strong> — Architectural and protective, these pieces work as armor for the modern professional</li>
+            <li><strong>Fluid silk shirts in midnight tones</strong> — Movement and texture become the luxury signifier</li>
+            <li><strong>Slim trousers with high breaks</strong> — Precision tailoring that rewards attention to detail</li>
+          </ul>
+
+          <div class="inline-img">◈</div>
+
+          <h3>The Role of Digital Marketing in the Dark Aesthetic</h3>
+
+          <p>What's fascinating about the dark luxury movement is how it has been amplified by digital channels rather than traditional fashion media. Instagram's algorithm, counterintuitively, rewards high-contrast dark imagery because of its visual distinctiveness in a saturated feed.</p>
+
+          <p>Fashion brands that have adopted dark aesthetic positioning are seeing dramatically higher organic reach than brands maintaining conventional bright, aspirational visual identities. This is a data story as much as a cultural one.</p>
+
+          <p>At BLAKK, we've measured engagement rates on dark aesthetic content that are consistently 2.3x higher than industry averages. When we pair this content with intelligent email sequences and SMS campaigns, we create a complete ecosystem that converts browsers into lifelong buyers.</p>
+
+          <h2>Building Your Dark Luxury Wardrobe: A Framework</h2>
+
+          <p>If you're looking to adopt this aesthetic intentionally, here's a practical framework that our styling team uses:</p>
+
+          <ul>
+            <li>Start with a foundation of perfectly fitted black and charcoal basics</li>
+            <li>Introduce one statement piece each season — a velvet blazer, a sculptural coat</li>
+            <li>Focus obsessively on fabric quality over quantity</li>
+            <li>Let accessories be functional: leather, hardware, minimal</li>
+            <li>Consider the complete silhouette, not individual pieces in isolation</li>
+          </ul>
+
+          <p>The dark luxury movement is not about austerity or nihilism. It's about the profound confidence that comes from knowing exactly who you are and expressing that with precision. In a world of algorithmic noise, it is radical clarity.</p>
+        </div>
+
+        <!-- Tags -->
+        <div class="post-tags">
+          <span class="tag">Fashion</span>
+          <span class="tag">Dark Luxury</span>
+          <span class="tag">Monochrome</span>
+          <span class="tag">2025 Trends</span>
+          <span class="tag">Style Guide</span>
+        </div>
+
+        <!-- Author Box -->
+        <div class="post-author-box">
+          <div class="author-box-avatar">A</div>
+          <div>
+            <div class="author-box-name">Aryan Mehta</div>
+            <div class="author-box-role">Creative Director</div>
+            <div class="author-box-bio">Aryan leads creative strategy at BLAKK with 12 years of experience in luxury fashion and digital brand building. He has worked with over 100 premium labels across India, Europe, and Southeast Asia.</div>
+          </div>
+        </div>
+
+        <!-- Comments -->
+        <div class="comment-section">
+          <h3 style="font-family:var(--font-display);font-size:1.4rem;margin-bottom:2rem;">3 Comments</h3>
+
+          <div class="comment-item">
+            <div class="comment-avatar" style="background:rgba(201,168,76,.15);color:var(--gold);">P</div>
+            <div>
+              <div><span class="comment-name">Priya Sharma</span><span class="comment-date">Dec 13, 2025</span></div>
+              <div class="comment-text">Absolutely loved this perspective. The point about Gen Z rejecting performative wealth is something I've noticed too — they're drawn to brands that feel authentic rather than aspirational in the old-school sense.</div>
+            </div>
+          </div>
+
+          <div class="comment-item">
+            <div class="comment-avatar" style="background:rgba(123,79,207,.15);color:var(--purple-light);">R</div>
+            <div>
+              <div><span class="comment-name">Rohan Kapoor</span><span class="comment-date">Dec 14, 2025</span></div>
+              <div class="comment-text">The stat about dark aesthetic content getting 2.3x higher engagement is fascinating. We're seeing similar patterns with our clients. Would love to see the full breakdown of the data.</div>
+            </div>
+          </div>
+
+          <div class="comment-item">
+            <div class="comment-avatar" style="background:rgba(79,195,247,.1);color:var(--electric);">N</div>
+            <div>
+              <div><span class="comment-name">Nisha Verma</span><span class="comment-date">Dec 15, 2025</span></div>
+              <div class="comment-text">The velvet blazer from your collection is exactly what this article describes. Just ordered mine — can't wait for it to arrive!</div>
+            </div>
+          </div>
+
+          <!-- Comment Form -->
+          <div class="comment-form">
+            <h4 style="font-family:var(--font-display);font-size:1.2rem;margin-bottom:1.5rem;">Leave a Comment</h4>
+            <div class="comment-form-grid">
+              <div class="form-group">
+                <label class="form-label">Your Name</label>
+                <input type="text" class="form-input" placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" class="form-input" placeholder="john@example.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Comment</label>
+              <textarea class="form-textarea" rows="5" placeholder="Share your thoughts..."></textarea>
+            </div>
+            <button class="btn btn--primary">Post Comment</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sidebar-widget">
+          <div class="widget-title">Recent Posts</div>
+          <div class="recent-post">
+            <div class="recent-thumb" style="background:linear-gradient(135deg,#161822,#1e2035);">◈</div>
+            <div><div class="recent-post-title">AI Email Personalization vs Curation</div><div class="recent-post-date">Dec 8, 2025</div></div>
+          </div>
+          <div class="recent-post">
+            <div class="recent-thumb" style="background:linear-gradient(135deg,#181818,#222);">▲</div>
+            <div><div class="recent-post-title">Building a ₹10 Crore Brand Blueprint</div><div class="recent-post-date">Dec 3, 2025</div></div>
+          </div>
+          <div class="recent-post">
+            <div class="recent-thumb" style="background:linear-gradient(135deg,#1a1015,#25101a);">✧</div>
+            <div><div class="recent-post-title">SMS Marketing: 40% Conversion Rates</div><div class="recent-post-date">Nov 28, 2025</div></div>
+          </div>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">Categories</div>
+          <ul style="list-style:none;">
+            <li style="padding:.5rem 0;border-bottom:1px solid var(--border-glass);"><a href="blog.html" style="display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-secondary);">Fashion <span style="color:var(--gold);">24</span></a></li>
+            <li style="padding:.5rem 0;border-bottom:1px solid var(--border-glass);"><a href="blog.html" style="display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-secondary);">Marketing <span style="color:var(--gold);">18</span></a></li>
+            <li style="padding:.5rem 0;"><a href="blog.html" style="display:flex;justify-content:space-between;font-size:.85rem;color:var(--text-secondary);">Strategy <span style="color:var(--gold);">12</span></a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-widget" style="background:linear-gradient(135deg,#141414,#0f0f0f);border-color:rgba(201,168,76,.2);">
+          <div class="widget-title">Newsletter</div>
+          <p style="font-size:.82rem;color:var(--text-muted);margin-bottom:1rem;">Weekly insights on fashion and digital marketing.</p>
+          <input type="email" class="form-input" placeholder="Your email" style="margin-bottom:.7rem;">
+          <button class="btn btn--primary" style="width:100%;justify-content:center;">Subscribe</button>
+        </div>
+
+        <div class="sidebar-widget">
+          <div class="widget-title">From the Collection</div>
+          <div class="product-card">
+            <div class="product-card__image" style="aspect-ratio:1;">
+              <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1c1810,#2a2010);font-size:2rem;color:rgba(201,168,76,.1);">✦</div>
+              <div class="product-card__overlay"><a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;font-size:.65rem;">View</a></div>
+            </div>
+            <div class="product-card__body">
+              <div class="product-card__name" style="font-size:.9rem;">Noir Velvet Blazer</div>
+              <div class="product-card__price" style="font-size:.82rem;">₹18,499</div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

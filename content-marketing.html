@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Marketing — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .feature-box{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;transition:var(--transition);}
+    .feature-box:hover{border-color:rgba(201,168,76,.2);transform:translateY(-4px);}
+    .feature-icon{font-size:1.8rem;margin-bottom:1rem;}
+    .feature-title{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.6rem;}
+    .feature-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.7;}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    @media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr);}.pricing-grid{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;gap:2.5rem;}}
+    @media(max-width:500px){.features-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+<div class="page-hero" style="background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(201,168,76,.06),transparent);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span> Marketing</span></div>
+    <div class="label" style="margin-bottom:.8rem;">Digital Service</div>
+    <h1 class="section-title" style="max-width:580px;"> Marketing <em style="font-style:italic;color:var(--gold);">That Dominates</em></h1>
+    <div class="divider"></div>
+    <p class="section-subtitle">A comprehensive content marketing approach that builds authority, drives organic growth, and positions your brand at the top.</p>
+    <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;"><a href="contact.html" class="btn btn--primary">Get Started</a><a href="#pricing" class="btn btn--outline">View Pricing</a></div>
+  </div>
+</div>
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="label" style="margin-bottom:.8rem;">Why It Matters</div>
+        <h2 class="section-title">The  Advantage for Luxury Brands</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.9;margin-bottom:1.2rem;">In a crowded market, brands that invest in content marketing build a defensible position that compounds over time. Traffic, trust, and conversions all increase together.</p>
+        <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.9;margin-bottom:2rem;">Our specialists design end-to-end content strategies that align with your brand voice, audience intent, and business objectives for maximum long-term ROI.</p>
+        <ul class="feature-list">
+          <li><span class="icon">✦</span>Tailored to your brand and audience</li>
+          <li><span class="icon">✦</span>Data-driven strategy and execution</li>
+          <li><span class="icon">✦</span>Ongoing optimization and reporting</li>
+          <li><span class="icon">✦</span>Fully integrated with other channels</li>
+        </ul>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:3rem;text-align:center;">
+        <div style="font-size:5rem;margin-bottom:1.5rem;">✦</div>
+        <div class="stat-number" style="font-size:3.5rem;">280%</div>
+        <div class="stat-label">Avg Traffic Growth</div>
+        <div class="gold-line"></div>
+        <div class="stat-number" style="font-size:2rem;">3.8x</div>
+        <div class="stat-label">Conversion Lift</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:.8rem;">Features</div>
+      <h2 class="section-title">Complete  Marketing Suite</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-box"><div class="feature-icon">🎯</div><h3 class="feature-title">Strategy & Planning</h3><p class="feature-desc">Data-backed content roadmap aligned with your brand goals, audience profiles, and competitive landscape.</p></div>
+      <div class="feature-box"><div class="feature-icon">✍️</div><h3 class="feature-title">Expert Creation</h3><p class="feature-desc">Premium content produced by specialists who understand luxury positioning and brand voice nuance.</p></div>
+      <div class="feature-box"><div class="feature-icon">📣</div><h3 class="feature-title">Distribution</h3><p class="feature-desc">Multi-channel distribution ensuring your content reaches the right audience at the right moment.</p></div>
+      <div class="feature-box"><div class="feature-icon">🔍</div><h3 class="feature-title">SEO Integration</h3><p class="feature-desc">Every piece of content is optimized for search intent, keyword strategy, and technical SEO best practices.</p></div>
+      <div class="feature-box"><div class="feature-icon">📈</div><h3 class="feature-title">Performance Tracking</h3><p class="feature-desc">Comprehensive analytics covering reach, engagement, conversions, and revenue attribution from content.</p></div>
+      <div class="feature-box"><div class="feature-icon">🔄</div><h3 class="feature-title">Continuous Optimization</h3><p class="feature-desc">Monthly performance reviews with iterative improvements based on data and audience feedback.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:.8rem;">Pricing</div>
+      <h2 class="section-title"> Marketing Plans</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card__name">Basic</div>
+        <div class="pricing-card__price"><sup>₹</sup>14,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>Strategy Session</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>4 Pieces/Month</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Basic Distribution</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Monthly Report</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>SEO Optimization</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>Paid Promotion</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__name">Pro</div>
+        <div class="pricing-card__price"><sup>₹</sup>39,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>Full Strategy</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>12 Pieces/Month</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Multi-Channel Distribution</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>SEO Integration</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Paid Promotion</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Bi-Weekly Reports</div>
+        </div>
+        <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__name">Premium</div>
+        <div class="pricing-card__price"><sup>₹</sup>84,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>End-to-End Management</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Unlimited Pieces</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Premium Distribution</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Advanced SEO</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Max Paid Budget</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Dedicated Manager</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--sm"><div class="container"><div class="cta-banner"><div class="label" style="margin-bottom:1rem;">Free Consultation</div><h2 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;">Start Your  Marketing Journey</h2><p style="color:var(--text-secondary);margin-bottom:2rem;">Book a free strategy call with our content marketing experts today.</p><a href="contact.html" class="btn btn--primary">Book Free Call</a></div></div></section>
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Marketing — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .service-hero { background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.07), transparent); }
+    .hero-icon { font-size:6rem; color:rgba(201,168,76,0.08); line-height:1; }
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .feature-box { background:var(--bg-card); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:2rem; transition:var(--transition); }
+    .feature-box:hover { border-color:rgba(201,168,76,0.2); transform:translateY(-4px); }
+    .feature-icon { font-size:1.8rem; margin-bottom:1rem; }
+    .feature-title { font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.6rem; }
+    .feature-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    @media(max-width:900px) { .features-grid{grid-template-columns:repeat(2,1fr);} .pricing-grid{grid-template-columns:1fr;} .two-col{grid-template-columns:1fr;gap:2.5rem;} }
+    @media(max-width:500px) { .features-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+<!-- Hero -->
+<div class="page-hero service-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span>Email Marketing</span></div>
+    <div style="display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;">
+      <div>
+        <div class="label" style="margin-bottom:0.8rem;">Digital Service</div>
+        <h1 class="section-title" style="max-width:580px;">Email Marketing That <em style="font-style:italic;color:var(--gold);">Converts & Retains</em></h1>
+        <div class="divider"></div>
+        <p class="section-subtitle">Precision-engineered email campaigns with behavioral automation, dynamic personalization, and relentless A/B optimization.</p>
+        <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+          <a href="contact.html" class="btn btn--primary">Get Started</a>
+          <a href="#pricing" class="btn btn--outline">View Pricing</a>
+        </div>
+      </div>
+      <div class="hero-icon" style="display:none;">✉</div>
+    </div>
+  </div>
+</div>
+
+<!-- What is it -->
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="label" style="margin-bottom:0.8rem;">The Service</div>
+        <h2 class="section-title">Why Email Is Still the Highest-ROI Channel</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem;">For every ₹1 spent on email marketing, brands generate an average of ₹36 in return. Yet most brands leave this channel wildly under-optimized — sending generic blasts and wondering why open rates tank.</p>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.9;margin-bottom:2rem;">At BLAKK, we build intelligent email ecosystems: welcome sequences that nurture, abandon cart flows that recover, post-purchase journeys that create loyalists, and win-back campaigns that re-engage.</p>
+        <ul class="feature-list">
+          <li><span class="icon">✦</span>Average 42% open rate across campaigns</li>
+          <li><span class="icon">✦</span>Fully compliant with GDPR & CAN-SPAM</li>
+          <li><span class="icon">✦</span>Integrated with all major ESPs (Klaviyo, Mailchimp, etc.)</li>
+          <li><span class="icon">✦</span>Weekly performance reports with actionable insights</li>
+        </ul>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:3rem;text-align:center;">
+        <div style="font-size:5rem;margin-bottom:1.5rem;">✉</div>
+        <div class="stat-number" style="font-size:3.5rem;">4200%</div>
+        <div class="stat-label">Average Email Marketing ROI</div>
+        <div class="gold-line"></div>
+        <div class="stat-number" style="font-size:2rem;margin-top:1rem;">98%</div>
+        <div class="stat-label">Deliverability Rate</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">What's Included</div>
+      <h2 class="section-title">Full-Spectrum Email Service</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-box"><div class="feature-icon">🎯</div><h3 class="feature-title">Segmentation & Targeting</h3><p class="feature-desc">Micro-segment your list by behavior, purchase history, geography, and engagement level for surgical targeting.</p></div>
+      <div class="feature-box"><div class="feature-icon">⚡</div><h3 class="feature-title">Automation Flows</h3><p class="feature-desc">Welcome series, abandoned cart, browse abandonment, win-back, and post-purchase — all automated and optimized.</p></div>
+      <div class="feature-box"><div class="feature-icon">✦</div><h3 class="feature-title">Template Design</h3><p class="feature-desc">Pixel-perfect, mobile-first email templates that reflect your brand's premium positioning and voice.</p></div>
+      <div class="feature-box"><div class="feature-icon">📊</div><h3 class="feature-title">A/B Testing</h3><p class="feature-desc">Subject lines, CTAs, send times, layouts — everything is tested for continuous improvement in performance.</p></div>
+      <div class="feature-box"><div class="feature-icon">🔒</div><h3 class="feature-title">List Hygiene</h3><p class="feature-desc">Regular pruning, bounce management, and engagement scoring to keep your sender reputation pristine.</p></div>
+      <div class="feature-box"><div class="feature-icon">📈</div><h3 class="feature-title">Analytics & Reporting</h3><p class="feature-desc">Detailed weekly reports with open rates, CTR, revenue attribution, and growth trajectory dashboards.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">Investment</div>
+      <h2 class="section-title">Transparent Pricing Plans</h2>
+      <div class="divider divider--center"></div>
+      <p class="section-subtitle">No hidden fees. No long-term lock-ins. Cancel anytime.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card__name">Basic</div>
+        <div class="pricing-card__price"><sup>₹</sup>9,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>Up to 5,000 Contacts</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>4 Campaigns/Month</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Basic Automation (3 flows)</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Monthly Report</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>A/B Testing</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>Dedicated Manager</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__name">Pro</div>
+        <div class="pricing-card__price"><sup>₹</sup>24,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>Up to 25,000 Contacts</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Unlimited Campaigns</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Full Automation Suite</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Weekly Reports</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Advanced A/B Testing</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Dedicated Manager</div>
+        </div>
+        <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__name">Premium</div>
+        <div class="pricing-card__price"><sup>₹</sup>59,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>Unlimited Contacts</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Unlimited Campaigns</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Custom AI Automation</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Real-Time Dashboard</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Multi-Variate Testing</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Priority Support</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section--sm">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="label" style="margin-bottom:1rem;">Free Audit</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;">Get Your Free Email Marketing Audit</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;">We'll analyse your current email setup and show you exactly where you're leaving money on the table.</p>
+      <a href="contact.html" class="btn btn--primary">Claim Free Audit</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

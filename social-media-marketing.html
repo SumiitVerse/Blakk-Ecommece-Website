@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Marketing — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .feature-box{background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:2rem;transition:var(--transition);}
+    .feature-box:hover{border-color:rgba(201,168,76,0.2);transform:translateY(-4px);}
+    .feature-icon{font-size:1.8rem;margin-bottom:1rem;}
+    .feature-title{font-family:var(--font-display);font-size:1.1rem;margin-bottom:0.6rem;}
+    .feature-desc{font-size:.85rem;color:var(--text-secondary);line-height:1.7;}
+    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    @media(max-width:900px){.features-grid{grid-template-columns:repeat(2,1fr);}.pricing-grid{grid-template-columns:1fr;}.two-col{grid-template-columns:1fr;gap:2.5rem;}}
+    @media(max-width:500px){.features-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+<div class="page-hero" style="background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(79,195,247,.06),transparent);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span>Social Media Marketing</span></div>
+    <div class="label" style="margin-bottom:.8rem;">Digital Service</div>
+    <h1 class="section-title" style="max-width:580px;">Social Media That Builds <em style="font-style:italic;color:var(--gold);">Empires, Not Just Followers</em></h1>
+    <div class="divider"></div>
+    <p class="section-subtitle">Platform-native content strategy, paid social, community building, and influencer partnerships that translate engagement into revenue.</p>
+    <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;"><a href="contact.html" class="btn btn--primary">Get Started</a><a href="#pricing" class="btn btn--outline">View Pricing</a></div>
+  </div>
+</div>
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="label" style="margin-bottom:.8rem;">Our Approach</div>
+        <h2 class="section-title">Social Media is a Brand's Most Visible Asset</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.9;margin-bottom:1.2rem;">We don't post for vanity metrics. Every piece of content we create has strategic intent — to build authority, drive traffic, and convert followers into customers.</p>
+        <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.9;margin-bottom:2rem;">Our team of social strategists, designers, and community managers works across Instagram, LinkedIn, YouTube, X, and Pinterest to build a cohesive brand presence that dominates your niche.</p>
+        <ul class="feature-list">
+          <li><span class="icon">✦</span>Platform-specific content calendars</li>
+          <li><span class="icon">✦</span>In-house design & copywriting team</li>
+          <li><span class="icon">✦</span>Paid social with proven ROAS</li>
+          <li><span class="icon">✦</span>Monthly performance audits</li>
+        </ul>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:3rem;text-align:center;">
+        <div style="font-size:5rem;margin-bottom:1.5rem;">◈</div>
+        <div class="stat-number" style="font-size:3.5rem;">5.2x</div>
+        <div class="stat-label">Average ROAS on Paid Social</div>
+        <div class="gold-line"></div>
+        <div class="stat-number" style="font-size:2rem;">300%</div>
+        <div class="stat-label">Avg Follower Growth (6 mo)</div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:.8rem;">Features</div>
+      <h2 class="section-title">Full Social Media Management</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-box"><div class="feature-icon">📸</div><h3 class="feature-title">Content Creation</h3><p class="feature-desc">Brand-aligned posts, reels, carousels, and stories designed by our in-house creative team every week.</p></div>
+      <div class="feature-box"><div class="feature-icon">💰</div><h3 class="feature-title">Paid Social Ads</h3><p class="feature-desc">Meta, Instagram, LinkedIn, and Pinterest ad campaigns managed for maximum ROAS and cost efficiency.</p></div>
+      <div class="feature-box"><div class="feature-icon">🤝</div><h3 class="feature-title">Influencer Partnerships</h3><p class="feature-desc">Curated micro and macro influencer campaigns that deliver authentic reach to your target audience.</p></div>
+      <div class="feature-box"><div class="feature-icon">💬</div><h3 class="feature-title">Community Management</h3><p class="feature-desc">Daily comment responses, DM handling, and community engagement to build genuine brand loyalty.</p></div>
+      <div class="feature-box"><div class="feature-icon">📅</div><h3 class="feature-title">Content Calendar</h3><p class="feature-desc">Monthly content planning aligned to product launches, trends, seasons, and cultural moments.</p></div>
+      <div class="feature-box"><div class="feature-icon">📊</div><h3 class="feature-title">Analytics & Insights</h3><p class="feature-desc">Deep-dive monthly reports covering reach, engagement, follower growth, and paid performance.</p></div>
+    </div>
+  </div>
+</section>
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:.8rem;">Pricing</div>
+      <h2 class="section-title">Social Media Plans</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card__name">Basic</div>
+        <div class="pricing-card__price"><sup>₹</sup>12,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>2 Platforms</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>12 Posts/Month</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Basic Ad Management</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Monthly Report</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>Influencer Campaigns</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>Community Mgmt</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__name">Pro</div>
+        <div class="pricing-card__price"><sup>₹</sup>34,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>4 Platforms</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>30 Posts/Month</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Full Ad Management</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Community Management</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>1 Influencer Campaign</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Weekly Reports</div>
+        </div>
+        <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__name">Premium</div>
+        <div class="pricing-card__price"><sup>₹</sup>74,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>All Platforms</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Unlimited Content</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Advanced Paid Social</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Full Community Mgmt</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>3 Influencer Campaigns</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Dedicated Team</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="section--sm"><div class="container"><div class="cta-banner"><div class="label" style="margin-bottom:1rem;">Free Strategy</div><h2 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;">Get a Free Social Media Strategy Session</h2><p style="color:var(--text-secondary);margin-bottom:2rem;">We'll audit your profiles and present a 30-day growth plan.</p><a href="contact.html" class="btn btn--primary">Book Free Session</a></div></div></section>
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

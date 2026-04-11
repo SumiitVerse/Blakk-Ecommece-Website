@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Collection — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+    .filter-btn {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.6rem 1.4rem;
+      border: 1px solid var(--border-glass);
+      border-radius: 2px;
+      color: var(--text-muted);
+      transition: var(--transition);
+      cursor: pointer;
+      background: none;
+    }
+    .filter-btn:hover, .filter-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-dim);
+    }
+    .collection-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .sort-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .sort-bar select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      color: var(--text-secondary);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      font-family: var(--font-heading);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      outline: none;
+    }
+    .result-count { font-size: 0.82rem; color: var(--text-muted); font-family: var(--font-heading); }
+    @media(max-width:900px) { .collection-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px) { .collection-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<div class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <span>Collection</span>
+    </div>
+    <div class="label" style="margin-bottom:0.8rem;">2025 Season</div>
+    <h1 class="section-title">The Full Collection</h1>
+    <p class="section-subtitle">Curated luxury pieces crafted for those who define their own aesthetic language.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <div class="filter-bar">
+      <span style="font-family:var(--font-heading);font-size:0.68rem;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-muted);margin-right:0.5rem;">Filter:</span>
+      <button class="filter-btn active" onclick="filterProducts(this,'all')">All</button>
+      <button class="filter-btn" onclick="filterProducts(this,'men')">Men</button>
+      <button class="filter-btn" onclick="filterProducts(this,'women')">Women</button>
+      <button class="filter-btn" onclick="filterProducts(this,'new')">New Arrivals</button>
+      <button class="filter-btn" onclick="filterProducts(this,'trending')">Trending</button>
+      <button class="filter-btn" onclick="filterProducts(this,'sale')">Sale</button>
+    </div>
+
+    <div class="sort-bar">
+      <div class="result-count">Showing <strong style="color:var(--gold);">24</strong> of 120 products</div>
+      <select>
+        <option>Sort by: Featured</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest First</option>
+        <option>Best Sellers</option>
+      </select>
+    </div>
+
+    <div class="collection-grid" id="productGrid">
+
+      <!-- Product items -->
+      <div class="product-card" data-cat="men new">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1c1810,#2a2010);">
+            <span style="font-size:4rem;color:rgba(201,168,76,0.1);">✦</span>
+          </div>
+          <span class="product-card__badge">New</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <img src="c:\Users\HP\OneDrive\Pictures\jacket.jpeg">
+          <div class="product-card__name">Noir Velvet Blazer</div>
+          <div class="product-card__price"><del>₹24,999</del> ₹18,499</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="women trending">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#161822,#1e2035);">
+            <span style="font-size:4rem;color:rgba(123,79,207,0.1);">◈</span>
+          </div>
+          <span class="product-card__badge product-card__badge--new">Trending</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+           <img src="c:\Users\HP\OneDrive\Pictures\oversized black.jpeg">
+          <div class="product-card__name">Eclipse Trench Coat</div>
+          <div class="product-card__price">₹32,000</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="men">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#181818,#222);">
+            <span style="font-size:4rem;color:rgba(255,255,255,0.04);">▲</span>
+          </div>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+            <img src="c:\Users\HP\OneDrive\Pictures\fullbyshirt.jpeg">
+
+          <div class="product-card__name">Midnight Silk Shirt</div>
+          <div class="product-card__price">₹8,999</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="women sale">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a1015,#25101a);">
+            <span style="font-size:4rem;color:rgba(201,168,76,0.08);">✧</span>
+          </div>
+          <span class="product-card__badge">Sale</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+               <img src="c:\Users\HP\OneDrive\Pictures\strait fir for women.jpeg">
+          <div class="product-card__name">Onyx Slim Trousers</div>
+          <div class="product-card__price"><del>₹12,500</del> ₹9,200</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="men new">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#101818,#152020);">
+            <span style="font-size:4rem;color:rgba(79,195,247,0.08);">⬡</span>
+          </div>
+          <span class="product-card__badge">New</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+            <img src="c:\Users\HP\OneDrive\Pictures\sweatshirt.jpeg">
+          <div class="product-card__name">Phantom Overcoat</div>
+          <div class="product-card__price">₹45,000</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="women trending">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1c1410,#28180c);">
+            <span style="font-size:4rem;color:rgba(201,168,76,0.1);">◇</span>
+          </div>
+          <span class="product-card__badge product-card__badge--new">Trending</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+           <img src="c:\Users\HP\OneDrive\Pictures\strait fit.jpeg">
+          <div class="product-card__name">Velvet Wrap Dress</div>
+          <div class="product-card__price">₹19,500</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="men sale">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#141414,#1a1a1a);">
+            <span style="font-size:4rem;color:rgba(255,255,255,0.03);">■</span>
+          </div>
+          <span class="product-card__badge">Sale</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+           <img src="c:\Users\HP\OneDrive\Pictures\formal.jpeg">
+          <div class="product-card__name">Obsidian Bomber</div>
+          <div class="product-card__price"><del>₹28,000</del> ₹20,500</div>
+        </div>
+      </div>
+
+      <div class="product-card" data-cat="women new">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#18101c,#221528);">
+            <span style="font-size:4rem;color:rgba(123,79,207,0.1);">✦</span>
+          </div>
+          <span class="product-card__badge">New</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+             <img src="c:\Users\HP\OneDrive\Pictures\faith.jpeg">
+          <div class="product-card__name">Dusk Maxi Skirt</div>
+          <div class="product-card__price">₹14,999</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Pagination -->
+    <div style="display:flex;justify-content:center;align-items:center;gap:0.5rem;margin-top:4rem;">
+      <button class="filter-btn active">1</button>
+      <button class="filter-btn">2</button>
+      <button class="filter-btn">3</button>
+      <span style="color:var(--text-muted);padding:0 0.3rem;">...</span>
+      <button class="filter-btn">12</button>
+      <button class="filter-btn" style="display:flex;align-items:center;gap:0.3rem;">Next →</button>
+    </div>
+
+  </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="components.js"></script>
+<script>
+function filterProducts(btn, cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#productGrid .product-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat?.includes(cat)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

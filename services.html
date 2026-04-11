@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Services — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .services-hero { background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,168,76,0.08), transparent); }
+    .process-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; position:relative; }
+    .process-steps::before { content:''; position:absolute; top:28px; left:calc(12.5% + 28px); right:calc(12.5% + 28px); height:1px; background:linear-gradient(90deg,var(--gold),var(--purple),var(--gold)); opacity:0.3; }
+    .process-step { text-align:center; position:relative; }
+    .step-num { width:56px; height:56px; border:1px solid var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--gold); margin:0 auto 1.2rem; background:var(--bg-card); position:relative; z-index:1; }
+    .step-title { font-family:var(--font-heading); font-size:0.75rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:0.5rem; }
+    .step-desc { font-size:0.82rem; color:var(--text-muted); line-height:1.7; }
+    .services-big-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    @media(max-width:900px) { .services-big-grid{grid-template-columns:repeat(2,1fr);} .process-steps{grid-template-columns:repeat(2,1fr);} .process-steps::before{display:none;} }
+    @media(max-width:500px) { .services-big-grid{grid-template-columns:1fr;} .process-steps{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+<div class="page-hero services-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Services</span></div>
+    <div class="label" style="margin-bottom:0.8rem;">Digital Mastery</div>
+    <h1 class="section-title" style="max-width:600px;">Marketing Services That <em style="font-style:italic;color:var(--gold);">Redefine Growth</em></h1>
+    <div class="divider"></div>
+    <p class="section-subtitle">Six precision-engineered marketing disciplines, each designed to compound your brand's authority and revenue.</p>
+  </div>
+</div>
+
+<!-- Process -->
+<section class="section--sm" style="background:var(--bg-secondary);border-bottom:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="process-steps">
+      <div class="process-step"><div class="step-num">01</div><div class="step-title">Discovery</div><div class="step-desc">Deep brand audit and market positioning analysis</div></div>
+      <div class="process-step"><div class="step-num">02</div><div class="step-title">Strategy</div><div class="step-desc">Custom growth blueprint across all channels</div></div>
+      <div class="process-step"><div class="step-num">03</div><div class="step-title">Execute</div><div class="step-desc">Precision deployment by specialist teams</div></div>
+      <div class="process-step"><div class="step-num">04</div><div class="step-title">Scale</div><div class="step-desc">Data-driven optimization and compounding growth</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services Grid -->
+<section class="section">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">Our Disciplines</div>
+      <h2 class="section-title">Six Pillars of Digital Dominance</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="services-big-grid">
+
+      <div class="service-card">
+        <div class="service-card__icon">✉</div>
+        <h3 class="service-card__title">Email Marketing</h3>
+        <p class="service-card__desc">Automated sequences, list hygiene, A/B testing, and personalization flows that generate consistent revenue on autopilot.</p>
+        <ul class="feature-list" style="margin-bottom:1.5rem;">
+          <li><span class="icon">✦</span>Automated Campaigns</li>
+          <li><span class="icon">✦</span>Behavioral Triggers</li>
+          <li><span class="icon">✦</span>Deliverability Optimization</li>
+        </ul>
+        <a href="email-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon" style="background:var(--purple-dim);border-color:rgba(123,79,207,0.2);">📱</div>
+        <h3 class="service-card__title">SMS Marketing</h3>
+        <p class="service-card__desc">High-velocity text campaigns with 98% open rates. Flash sales, abandoned cart recovery, and loyalty programs.</p>
+        <ul class="feature-list" style="margin-bottom:1.5rem;">
+          <li><span class="icon">✦</span>Bulk SMS Campaigns</li>
+          <li><span class="icon">✦</span>Cart Recovery</li>
+          <li><span class="icon">✦</span>Compliance Management</li>
+        </ul>
+        <a href="sms-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon">◈</div>
+        <h3 class="service-card__title">Social Media Marketing</h3>
+        <p class="service-card__desc">Platform-native content, paid social architecture, community building, and influencer partnership programs.</p>
+        <ul class="feature-list" style="margin-bottom:1.5rem;">
+          <li><span class="icon">✦</span>Content Calendar</li>
+          <li><span class="icon">✦</span>Paid Social Ads</li>
+          <li><span class="icon">✦</span>Influencer Partnerships</li>
+        </ul>
+        <a href="social-media-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon" style="background:var(--purple-dim);border-color:rgba(123,79,207,0.2);">✦</div>
+        <h3 class="service-card__title">Content Marketing</h3>
+        <p class="service-card__desc">SEO-led editorial strategy, long-form content, thought leadership, and a full content ecosystem that owns organic search.</p>
+        <ul class="feature-list" style="margin-bottom:1.5rem;">
+          <li><span class="icon">✦</span>SEO Strategy</li>
+          <li><span class="icon">✦</span>Blog & Editorial</li>
+          <li><span class="icon">✦</span>Lead Magnets</li>
+        </ul>
+        <a href="content-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon">⬡</div>
+        <h3 class="service-card__title">Affiliate Marketing</h3>
+        <p class="service-card__desc">Performance-driven affiliate networks with tier-based commissions, tracking infrastructure, and partner acquisition.</p>
+        <ul class="feature-list" style="margin-bottom:1.5rem;">
+          <li><span class="icon">✦</span>Network Setup</li>
+          <li><span class="icon">✦</span>Partner Recruitment</li>
+          <li><span class="icon">✦</span>Commission Tracking</li>
+        </ul>
+        <a href="affiliate-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon" style="background:var(--purple-dim);border-color:rgba(123,79,207,0.2);">▶</div>
+        <h3 class="service-card__title">Video Marketing</h3>
+        <p class="service-card__desc">Brand films, reels, YouTube strategy, short-form content, and cinematic storytelling that makes audiences feel your brand.</p>
+        <ul class="feature-list" style="margin-bottom:1.5rem;">
+          <li><span class="icon">✦</span>Brand Films</li>
+          <li><span class="icon">✦</span>Short-Form Content</li>
+          <li><span class="icon">✦</span>YouTube Strategy</li>
+        </ul>
+        <a href="video-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section--sm" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);text-align:center;">
+      <div class="stat-item"><span class="stat-number">350+</span><span class="stat-label">Brands Served</span></div>
+      <div class="stat-item"><span class="stat-number">₹50M+</span><span class="stat-label">Revenue Driven</span></div>
+      <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">Client Retention</span></div>
+      <div class="stat-item"><span class="stat-number">4.9★</span><span class="stat-label">Avg Rating</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section--sm">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="label" style="margin-bottom:1rem;">Let's Collaborate</div>
+      <h2 style="font-size:clamp(1.8rem,3.5vw,2.8rem);margin-bottom:1rem;">Ready to Build Your Marketing Engine?</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2.5rem;">Book a free 45-minute strategy call with our senior consultants.</p>
+      <a href="contact.html" class="btn btn--primary">Book Free Consultation</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMS Marketing — BLAKK</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .features-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .feature-box { background:var(--bg-card); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:2rem; transition:var(--transition); }
+    .feature-box:hover { border-color:rgba(201,168,76,0.2); transform:translateY(-4px); }
+    .feature-icon { font-size:1.8rem; margin-bottom:1rem; }
+    .feature-title { font-family:var(--font-display); font-size:1.1rem; margin-bottom:0.6rem; }
+    .feature-desc { font-size:0.85rem; color:var(--text-secondary); line-height:1.7; }
+    .pricing-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    @media(max-width:900px) { .features-grid{grid-template-columns:repeat(2,1fr);} .pricing-grid{grid-template-columns:1fr;} .two-col{grid-template-columns:1fr;gap:2.5rem;} }
+    @media(max-width:500px) { .features-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+<div id="navbar-container"></div>
+
+<div class="page-hero" style="background:radial-gradient(ellipse 60% 80% at 80% 50%, rgba(123,79,207,0.07), transparent);">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="services.html">Services</a><span>/</span><span>SMS Marketing</span></div>
+    <div class="label" style="margin-bottom:0.8rem;">Digital Service</div>
+    <h1 class="section-title" style="max-width:580px;">SMS Marketing: <em style="font-style:italic;color:var(--gold);">98% Open Rate</em> Power</h1>
+    <div class="divider"></div>
+    <p class="section-subtitle">Reach your customers in the most personal space they have — their phone. Instant, direct, unmissable messaging that drives action.</p>
+    <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn--primary">Get Started</a>
+      <a href="#pricing" class="btn btn--outline">View Pricing</a>
+    </div>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <div class="label" style="margin-bottom:0.8rem;">The Power of SMS</div>
+        <h2 class="section-title">Text Messages Get Read. Emails Get Ignored.</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.9;margin-bottom:1.2rem;">The average SMS is read within 3 minutes of receipt. Compare that to email's 24-hour average. When you need to move fast — flash sales, event reminders, abandoned cart — SMS is your weapon.</p>
+        <p style="color:var(--text-secondary);font-size:0.95rem;line-height:1.9;margin-bottom:2rem;">We build compliant, segmented SMS campaigns that feel personal — not spam. Every message has a purpose, a call to action, and a clear path to conversion.</p>
+        <ul class="feature-list">
+          <li><span class="icon">✦</span>DLT-registered, fully TRAI compliant</li>
+          <li><span class="icon">✦</span>Bulk & transactional SMS infrastructure</li>
+          <li><span class="icon">✦</span>Two-way SMS for customer interaction</li>
+          <li><span class="icon">✦</span>Link tracking & click analytics</li>
+        </ul>
+      </div>
+      <div style="background:var(--bg-card);border:1px solid var(--border-glass);border-radius:var(--radius-lg);padding:3rem;text-align:center;">
+        <div style="font-size:5rem;margin-bottom:1.5rem;">📱</div>
+        <div class="stat-number" style="font-size:3.5rem;">98%</div>
+        <div class="stat-label">SMS Open Rate</div>
+        <div class="gold-line"></div>
+        <div class="stat-number" style="font-size:2rem;">3 min</div>
+        <div class="stat-label">Avg Read Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">Features</div>
+      <h2 class="section-title">Everything in Our SMS Suite</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-box"><div class="feature-icon">⚡</div><h3 class="feature-title">Flash Sale Campaigns</h3><p class="feature-desc">Time-sensitive offers deployed instantly to your entire list with countdown urgency that drives rapid conversions.</p></div>
+      <div class="feature-box"><div class="feature-icon">🛒</div><h3 class="feature-title">Cart Recovery SMS</h3><p class="feature-desc">Automated texts sent minutes after abandonment with a personalized product link and exclusive discount.</p></div>
+      <div class="feature-box"><div class="feature-icon">🎁</div><h3 class="feature-title">Loyalty Programs</h3><p class="feature-desc">Points, rewards, and VIP tier messages that keep your best customers engaged and spending more often.</p></div>
+      <div class="feature-box"><div class="feature-icon">📍</div><h3 class="feature-title">Geo-Targeting</h3><p class="feature-desc">Location-based campaigns for offline events, regional promotions, and store-opening announcements.</p></div>
+      <div class="feature-box"><div class="feature-icon">🤖</div><h3 class="feature-title">Two-Way Messaging</h3><p class="feature-desc">Let customers reply, opt-in to preferences, and interact with your brand directly via SMS.</p></div>
+      <div class="feature-box"><div class="feature-icon">📊</div><h3 class="feature-title">Analytics Dashboard</h3><p class="feature-desc">Delivery rates, click-through, opt-out rates, and revenue attribution all in one real-time dashboard.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pricing">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">Pricing</div>
+      <h2 class="section-title">SMS Marketing Plans</h2>
+      <div class="divider divider--center"></div>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <div class="pricing-card__name">Basic</div>
+        <div class="pricing-card__price"><sup>₹</sup>7,499</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>10,000 SMS Credits</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>4 Campaigns/Month</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Basic Segmentation</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>DLT Registration</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>Cart Recovery</div>
+          <div class="pricing-card__feature"><span class="cross">—</span>Two-Way SMS</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card pricing-card--featured">
+        <div class="pricing-card__name">Pro</div>
+        <div class="pricing-card__price"><sup>₹</sup>19,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>50,000 SMS Credits</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Unlimited Campaigns</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Advanced Segmentation</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Cart Recovery Flow</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Two-Way Messaging</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Analytics Dashboard</div>
+        </div>
+        <a href="contact.html" class="btn btn--primary" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-card__name">Premium</div>
+        <div class="pricing-card__price"><sup>₹</sup>44,999</div>
+        <div class="pricing-card__period">per month</div>
+        <div class="pricing-card__features">
+          <div class="pricing-card__feature"><span class="check">✦</span>200,000 SMS Credits</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Full Automation Suite</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Geo-Targeting</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Loyalty Program SMS</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Custom Integrations</div>
+          <div class="pricing-card__feature"><span class="check">✦</span>Dedicated Manager</div>
+        </div>
+        <a href="contact.html" class="btn btn--outline" style="width:100%;justify-content:center;">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section--sm">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="label" style="margin-bottom:1rem;">Free Trial</div>
+      <h2 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1rem;">Get 500 Free SMS Credits to Test Our Platform</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2rem;">No commitment. See delivery rates and ROI before you invest.</p>
+      <a href="contact.html" class="btn btn--primary">Claim Free Credits</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+<script src="components.js"></script>
+</body>
+</html>

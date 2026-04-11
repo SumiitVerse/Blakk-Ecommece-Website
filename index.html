@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLAKK — Luxury Fashion & Digital Marketing</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ---- Hero ---- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--bg-primary);
+    }
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(123,79,207,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 60% at 30% 80%, rgba(201,168,76,0.08) 0%, transparent 50%);
+    }
+    .hero__grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, transparent 70%);
+    }
+    .hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+    .hero__eyebrow::before {
+      content: '';
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+    .hero__title {
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero__title em {
+      font-style: italic;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,0.5);
+    }
+    .hero__subtitle {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+    .hero__actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .hero__scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      animation: float 3s ease-in-out infinite;
+    }
+    .hero__scroll::after {
+      content: '';
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+    }
+    .hero__visual {
+      position: absolute;
+      right: 0; top: 0; bottom: 0;
+      width: 45%;
+      overflow: hidden;
+    }
+    .hero__visual-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: grayscale(30%);
+    }
+    .hero__visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, var(--bg-primary) 0%, transparent 40%);
+      z-index: 1;
+    }
+    .hero__stats {
+      position: absolute;
+      right: 4rem;
+      bottom: 4rem;
+      z-index: 3;
+      display: flex;
+      gap: 2.5rem;
+    }
+    .hero__stat { text-align: right; }
+    .hero__stat-num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--gold); display: block; }
+    .hero__stat-label { font-family: var(--font-heading); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-muted); }
+
+    /* ---- Ticker ---- */
+    .ticker {
+      background: var(--gold);
+      padding: 0.8rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .ticker__track {
+      display: inline-flex;
+      animation: ticker 30s linear infinite;
+    }
+    .ticker__item {
+      font-family: var(--font-heading);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #080808;
+      padding: 0 2rem;
+    }
+    .ticker__dot { color: rgba(8,8,8,0.4); }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ---- Collection Carousel ---- */
+    .collection-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+    /* ---- Services Grid ---- */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    /* ---- About Section ---- */
+    .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-visual { position: relative; }
+    .about-img-main {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, #1a1a1a, #222);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: -2rem;
+      right: -2rem;
+      width: 140px; height: 140px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      z-index: 2;
+    }
+    .about-img-badge span:first-child { font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: #080808; line-height: 1; }
+    .about-img-badge span:last-child { font-family: var(--font-heading); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.15em; color: rgba(8,8,8,0.7); text-transform: uppercase; }
+
+    /* ---- Blog Preview ---- */
+    .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+    /* ---- Brand Strip ---- */
+    .brand-strip {
+      background: var(--bg-secondary);
+      padding: 3rem 0;
+      border-top: 1px solid var(--border-glass);
+      border-bottom: 1px solid var(--border-glass);
+      overflow: hidden;
+    }
+    .brand-strip__track {
+      display: flex;
+      gap: 4rem;
+      align-items: center;
+      animation: ticker 20s linear infinite;
+      white-space: nowrap;
+    }
+    .brand-strip__item {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      transition: opacity 0.3s;
+      cursor: default;
+    }
+    .brand-strip__item:hover { opacity: 0.8; }
+
+    @media (max-width: 900px) {
+      .collection-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
+      .blog-grid { grid-template-columns: 1fr; }
+      .hero__visual { display: none; }
+      .hero__stats { display: none; }
+    }
+    @media (max-width: 600px) {
+      .collection-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="navbar-container"></div>
+
+<!-- =============== HERO =============== -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__grid-lines"></div>
+  <div class="hero__visual">
+    <div class="hero__visual-img" style="background: linear-gradient(135deg, #1a1210 0%, #2a1f0f 40%, #1a1a2e 100%); display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-size:8rem; color:rgba(255,255,255,0.05);">✦</div>
+  </div>
+  <div class="container" style="width:100%;">
+    <div class="hero__content animate-up">
+      <div class="hero__eyebrow">New Collection 2025</div>
+      <h1 class="hero__title">
+        Where Luxury<br>
+        <em>Meets</em><br>
+        Authority
+      </h1>
+      <p class="hero__subtitle">Premium fashion craftsmanship fused with data-driven digital marketing strategies that transform brands into icons.</p>
+      <div class="hero__actions">
+        <a href="collection.html" class="btn btn--primary">
+          Shop Collection
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="services.html" class="btn btn--outline">Explore Services</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero__stats">
+    <div class="hero__stat">
+      <span class="hero__stat-num">500+</span>
+      <span class="hero__stat-label">Premium Pieces</span>
+    </div>
+    <div class="hero__stat">
+      <span class="hero__stat-num">98%</span>
+      <span class="hero__stat-label">Client Satisfaction</span>
+    </div>
+  </div>
+  <div class="hero__scroll">Scroll</div>
+</section>
+
+<!-- =============== TICKER =============== -->
+<div class="ticker">
+  <div class="ticker__track">
+    <span class="ticker__item">New Arrivals</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Luxury Fashion</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Digital Marketing</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Exclusive Drops</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Brand Elevation</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Premium Experience</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">New Arrivals</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Luxury Fashion</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Digital Marketing</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Exclusive Drops</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Brand Elevation</span><span class="ticker__dot">✦</span>
+    <span class="ticker__item">Premium Experience</span><span class="ticker__dot">✦</span>
+  </div>
+</div>
+
+<!-- =============== FEATURED COLLECTION =============== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <div class="label" style="margin-bottom:0.8rem;">Featured Collection</div>
+        <h2 class="section-title">New Season Arrivals</h2>
+      </div>
+      <a href="collection.html" class="btn btn--outline">View All</a>
+    </div>
+    <div class="collection-grid">
+
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1c1810,#2a2010);font-size:3rem;color:rgba(201,168,76,0.15);">✦</div>
+          <span class="product-card__badge">New</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+        <img src="c:\Users\HP\OneDrive\Pictures\suit.jpeg">
+          <div class="product-card__name">Bold party suit</div>
+          <div class="product-card__price"><del>₹24,999</del> ₹18,499</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#161822,#1e2035);font-size:3rem;color:rgba(123,79,207,0.15);">◈</div>
+          <span class="product-card__badge product-card__badge--new">Trending</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <img src="c:\Users\HP\OneDrive\Pictures\strait fit.jpeg">
+          <div class="product-card__name">Dark Black Loose Fit Jeans</div>
+          <div class="product-card__price">₹32,000</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#181818,#222);font-size:3rem;color:rgba(255,255,255,0.05);">▲</div>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <img src="c:\Users\HP\OneDrive\Pictures\blouse.jpeg">
+          <div class="product-card__name">Women Black Silk Dress</div>
+          <div class="product-card__price">₹8,999</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-card__image">
+          <div class="img-placeholder" style="width:100%;height:100%;background:linear-gradient(135deg,#1a1015,#25101a);font-size:3rem;color:rgba(201,168,76,0.1);">✧</div>
+          <span class="product-card__badge">Sale</span>
+          <div class="product-card__overlay">
+            <a href="product.html" class="btn btn--primary" style="width:100%;justify-content:center;">View Product</a>
+          </div>
+        </div>
+        <div class="product-card__body">
+          <img src="c:\Users\HP\OneDrive\Pictures\sleveless fork.jpeg">
+          <div class="product-card__name">Black Party Wear</div>
+          <div class="product-card__price"><del>₹12,500</del> ₹9,200</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============== BRAND STRIP =============== -->
+<div class="brand-strip">
+  <div class="brand-strip__track">
+    <span class="brand-strip__item">Avant-Garde</span>
+    <span class="brand-strip__item">Noir Collective</span>
+    <span class="brand-strip__item">Eclipse Studio</span>
+    <span class="brand-strip__item">Velvet House</span>
+    <span class="brand-strip__item">Onyx Atelier</span>
+    <span class="brand-strip__item">Phantom Wear</span>
+    <span class="brand-strip__item">Noir Collective</span>
+    <span class="brand-strip__item">Avant-Garde</span>
+    <span class="brand-strip__item">Eclipse Studio</span>
+    <span class="brand-strip__item">Velvet House</span>
+    <span class="brand-strip__item">Onyx Atelier</span>
+    <span class="brand-strip__item">Phantom Wear</span>
+  </div>
+</div>
+
+<!-- =============== MARKETING SERVICES =============== -->
+<section class="section" style="background:var(--bg-secondary);">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <div class="label" style="margin-bottom:0.8rem;">What We Do</div>
+      <h2 class="section-title">Precision Marketing Services</h2>
+      <div class="divider divider--center"></div>
+      <p class="section-subtitle">From inbox to algorithms — we build marketing ecosystems that convert audiences into loyal brand advocates.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-card__icon">✉</div>
+        <h3 class="service-card__title">Email Marketing</h3>
+        <p class="service-card__desc">Hyper-personalized campaigns that cut through the noise and drive measurable ROI with surgical precision.</p>
+        <a href="email-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon" style="background:var(--purple-dim);border-color:rgba(123,79,207,0.2);">📱</div>
+        <h3 class="service-card__title">SMS Marketing</h3>
+        <p class="service-card__desc">Direct-to-pocket messaging with 98% open rates — instant reach with maximum impact for every campaign.</p>
+        <a href="sms-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon">◈</div>
+        <h3 class="service-card__title">Social Media Marketing</h3>
+        <p class="service-card__desc">Commanding social presence strategies that transform followers into a devoted brand community.</p>
+        <a href="social-media-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon" style="background:var(--purple-dim);border-color:rgba(123,79,207,0.2);">✦</div>
+        <h3 class="service-card__title">Content Marketing</h3>
+        <p class="service-card__desc">Compelling narratives and editorial strategies that position your brand as the definitive voice in your niche.</p>
+        <a href="content-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon">⬡</div>
+        <h3 class="service-card__title">Affiliate Marketing</h3>
+        <p class="service-card__desc">Performance-driven partner networks that scale your reach while you only pay for results that matter.</p>
+        <a href="affiliate-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-card__icon" style="background:var(--purple-dim);border-color:rgba(123,79,207,0.2);">▶</div>
+        <h3 class="service-card__title">Video Marketing</h3>
+        <p class="service-card__desc">Cinematic brand storytelling that captivates audiences and drives exponential engagement across every platform.</p>
+        <a href="video-marketing.html" class="service-card__link">Explore Service →</a>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:3rem;">
+      <a href="services.html" class="btn btn--outline">View All Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- =============== ABOUT BRAND =============== -->
+<section class="section">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-visual">
+        <div class="about-img-main">
+          <div style="font-family:var(--font-display);font-size:6rem;font-weight:900;color:rgba(201,168,76,0.08);text-align:center;line-height:1;">BLAKK</div>
+        </div>
+        <div class="about-img-badge">
+          <span>10+</span>
+          <span>Years of Excellence</span>
+        </div>
+      </div>
+      <div>
+        <div class="label" style="margin-bottom:0.8rem;">Our Story</div>
+        <h2 class="section-title">Born from Obsession,<br><em>Defined by Excellence</em></h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-secondary);margin-bottom:1.2rem;font-size:0.95rem;line-height:1.9;">BLAKK was conceived at the intersection of haute couture and digital intelligence. We don't just sell clothes — we architect experiences that resonate at a cultural frequency.</p>
+        <p style="color:var(--text-secondary);margin-bottom:2rem;font-size:0.95rem;line-height:1.9;">Our dual mastery of luxury fashion and precision digital marketing makes us uniquely positioned to build brands that don't just exist — they dominate.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;">
+          <div class="glass-card" style="padding:1.5rem;">
+            <div class="stat-number" style="font-size:2rem;">1200+</div>
+            <div class="stat-label">Products Curated</div>
+          </div>
+          <div class="glass-card" style="padding:1.5rem;">
+            <div class="stat-number" style="font-size:2rem;">350+</div>
+            <div class="stat-label">Brands Elevated</div>
+          </div>
+        </div>
+        <a href="about.html" class="btn btn--primary">Discover Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============== STATS BAND =============== -->
+<div style="background:var(--bg-secondary);border-top:1px solid var(--border-glass);border-bottom:1px solid var(--border-glass);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);text-align:center;padding:1rem 0;">
+      <div class="stat-item"><span class="stat-number">₹50M+</span><span class="stat-label">Revenue Generated</span></div>
+      <div class="stat-item"><span class="stat-number">98%</span><span class="stat-label">Client Retention</span></div>
+      <div class="stat-item"><span class="stat-number">500K+</span><span class="stat-label">Emails Delivered</span></div>
+      <div class="stat-item"><span class="stat-number">15+</span><span class="stat-label">Industry Awards</span></div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- =============== CTA BANNER =============== -->
+<section class="section--sm">
+  <div class="container">
+    <div class="cta-banner">
+      <div class="label" style="margin-bottom:1rem;">Ready to Elevate?</div>
+      <h2 style="font-size:clamp(2rem,4vw,3.2rem);margin-bottom:1rem;max-width:600px;margin-left:auto;margin-right:auto;">Transform Your Brand Into a Cultural Icon</h2>
+      <p style="color:var(--text-secondary);margin-bottom:2.5rem;font-size:0.95rem;">Join 350+ brands that chose BLAKK to dominate their market.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="contact.html" class="btn btn--primary">Start Your Journey</a>
+        <a href="services.html" class="btn btn--ghost">View Services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-container"></div>
+
+<script src="components.js"></script>
+<script src='https://cdn.jotfor.ms/agent/embedjs/019d7c6f91fc73ceb57cc087a468c96c1d91/embed.js'>
+</script>
+</body>
+</html>
